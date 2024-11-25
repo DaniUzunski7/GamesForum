@@ -1,0 +1,156 @@
+/* Container for the entire page */
+.top-games-container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    color: #fff;
+    overflow-y: auto;   
+  }
+  
+  /* Background Image */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/783472.jpg'); 
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    filter: brightness(50%); 
+    z-index: -1; 
+  }
+  
+  /* Overlay Content */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+  }
+  
+  /* Page Title */
+  .page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #00bcd4; /* Light blue accent */
+    margin-bottom: 2rem;
+  }
+  
+  /* Games Grid Layout */
+  .games-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* One column layout */
+    gap: 2rem; /* Space between items */
+    padding: 2rem 0;
+  }
+  
+  /* Game Rank */
+  .game-rank {
+    font-size: 1.8rem;
+    color: #00bcd4; /* Highlighted rank */
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Game Container */
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Individual Game Card */
+  .game-card {
+    background-color: rgba(30, 30, 30, 0.9); 
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Game Cover Image */
+  .game-cover {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+  }
+  
+  /* Game Details Section */
+  .game-details {
+    padding: 1.5rem;
+  }
+  
+  /* Game Title */
+  .game-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #00bcd4; 
+  }
+  
+  /* Game Description */
+  .game-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Game Info List */
+  .game-info {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .game-info li {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .game-info li strong {
+    color: #00bcd4; 
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .pagination-btn {
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #0288a8;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  
+  .page-info {
+    color: #ccc;
+    font-size: 1rem;
+  }
+  
