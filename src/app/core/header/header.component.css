@@ -1,0 +1,80 @@
+/* General styling for the header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo i:hover {
+  color: #00bcd4;
+  cursor: pointer;
+}
+
+/* Navigation menu styling */
+.nav-menu {
+  margin-left: 100px;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  font-weight: 1900;
+  margin: 0 1.5rem;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-menu li:hover {
+  color: #121212;
+  background-color: #00bcd4;
+  cursor: pointer;
+  border-radius: 35px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Authentication buttons styling */
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-buttons .btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 35px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.auth-buttons .login-btn {
+  background-color: #2a2a2a; /* Slightly lighter dark background */
+  color: #fff;
+}
+
+.auth-buttons .login-btn:hover {
+  background-color: #00bcd4;
+  color: #121212;
+}
+
+.auth-buttons .register-btn {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.auth-buttons .register-btn:hover {
+  background-color: #00bcd4;
+  color: #121212;
+}
