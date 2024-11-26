@@ -32,7 +32,7 @@
   /* Page Title */
   .page-title {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #00bcd4; /* Light blue accent */
     margin-bottom: 2rem;
   }
@@ -47,7 +47,7 @@
   
   /* Game Rank */
   .game-rank {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #00bcd4; /* Highlighted rank */
     margin-bottom: 1rem;
     font-weight: bold;
@@ -80,8 +80,10 @@
   /* Game Cover Image */
   .game-cover {
     width: 100%;
-    height: 550px;
+    height: 525px;
     object-fit: cover;
+    margin: 0 auto;
+    object-position: inherit;
   }
   
   /* Game Details Section */
