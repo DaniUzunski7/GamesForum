@@ -18,15 +18,6 @@ export class TopGamesComponent {
   currentPage: number = 1;
   gamesPerPage: number = 4;
   
-  topList: number = 1;
-  getCurrPlace(){
-
-    if (this.topList < 10){
-      this.topList++;
-    } 
-
-    return this.topList;
-  }
 
   totalPages: number = Math.ceil(this.topGames.length / this.gamesPerPage);
 

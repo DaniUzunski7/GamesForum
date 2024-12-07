@@ -100,7 +100,3 @@
   .auth-link a:hover {
     text-decoration: underline;
   }
-  
-  #first-name, #last-name, #password, #email, #repeat-password {
-    border: 1px solid silver;
-  }

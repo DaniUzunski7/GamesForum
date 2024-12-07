@@ -16,8 +16,16 @@
             <li routerLink="/top-games">Top Games</li>
         </ul>
     </nav>
-    <div class="auth-buttons">
-        <button routerLink="/login" class="btn login-btn">Login <i class="fa-solid fa-user"></i></button>
-        <button routerLink="/register" class="btn register-btn">Register <i class="fa-solid fa-user-plus"></i></button>
-    </div>
+    @if(isLogged){
+        <div class="auth-buttons">
+            <button routerLink="/profile" class="btn login-btn">Hello, {{userName()}} <i class="fa-solid fa-user-astronaut"></i></button>
+            <button (click)="logout()" class="btn register-btn">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        </div>
+    } @else {
+        <div class="auth-buttons">
+            <button routerLink="/login" class="btn login-btn">Login <i class="fa-solid fa-user"></i></button>
+            <button routerLink="/register" class="btn register-btn">Register <i class="fa-solid fa-user-plus"></i></button>
+        </div>
+    }
+    
 </header>
