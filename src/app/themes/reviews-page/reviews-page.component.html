@@ -1,0 +1,38 @@
+<div class="themes-container">
+    <!-- Background Image -->
+    <div class="background-image"></div>
+  
+    <!-- Overlay Content -->
+    <div class="overlay">
+      <h1 class="page-title">All Discussions</h1>
+  
+      <div class="themes-list">
+        <!-- Each theme card -->
+         @for (theme of currThemes; track $index) {
+
+             <div class="theme-card">
+                 <div class="theme-header">
+                     <h2 class="theme-title" routerLink="/reviews/{{theme.id}}">{{ theme.title }}</h2>
+                     <span class="theme-date">{{ dateConverter(theme.createdAt) }}</span>
+                    </div>
+                    <p class="theme-game"><strong>Game:</strong> {{ theme.gameTitle }}</p>
+                    <p class="theme-content">{{ theme.content }}</p>
+                    <p class="theme-owner">Owner: {{ theme.owner }}</p>
+                    <div class="theme-footer">
+                        <p class="theme-likes"><i class="fa-solid fa-heart" 
+                            [class.liked]="theme.liked" 
+                            (click)="like(theme.title)">
+                            </i> {{ theme.likes }} Likes
+                        </p>
+                        @if (theme.comments.length === 1) {
+                            <p class="theme-comments"><i class="fa-regular fa-comment"></i> {{ theme.comments.length }} Comment</p>
+                        } @else {
+                            <p class="theme-comments"><i class="fa-regular fa-comments"></i> {{ theme.comments.length }} Comments</p>
+                        }
+                    </div>
+                </div>
+            }
+      </div>
+    </div>
+  </div>
+  

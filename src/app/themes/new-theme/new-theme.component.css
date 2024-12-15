@@ -48,7 +48,7 @@
     display: block;
     font-size: 1rem;
     margin-bottom: 8px;
-    color: #00bcd4;
+    color: #ccc;
   }
   
   .form-group input,
@@ -109,5 +109,19 @@
     background-color: #3A3A3A;
     color: #00bcd4
   }
+
+  /* validation */
+  .required, input.required::placeholder {
+    color: red;
+    opacity: 0.7;
+  }
   
+  .required {
+    border: 1px solid red !important;
+  }
+  
+  .required-mess {
+    color: red;
+    opacity: 0.75;
+  }  
   

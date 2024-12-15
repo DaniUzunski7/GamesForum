@@ -1,0 +1,176 @@
+/* Container styling */
+.theme-details-container {
+    position: relative;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    color: #f0f0f0;
+    background-color: #1e1e1e;
+    overflow: hidden;
+  }
+  
+  /* Background image */
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/783472.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+  }
+  
+  /* Overlay to ensure content is readable */
+  .theme-details-container .overlay {
+    position: relative;
+    z-index: 1;  
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);  /* Dark transparent overlay */
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+  }
+  
+  /* Title and Game */
+  .theme-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .theme-title {
+    font-size: 2.2rem;
+    color: #00bcd4;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .theme-game {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+  }
+  
+  /* Theme Content */
+  .theme-body {
+    margin-bottom: 2rem;
+  }
+  
+  .theme-content {
+    font-size: 1.1rem;
+    color: #ddd;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .theme-likes {
+    font-size: 1rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Comments Section */
+  .comments-title {
+    font-size: 1.5rem;
+    color: #00bcd4;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .comments-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .comment {
+    background-color: #333;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 188, 212, 0.3);
+    color: #ccc;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100px;
+  }
+
+  .comment-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .bigger {
+    width: 60%;
+  }
+
+  span {
+    text-align: end;
+  }
+  
+  /* Comment Form */
+  .comment-form {
+    text-align: center;
+  }
+  
+  .comment-input {
+    width: 80%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #444;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border 0.3s ease;
+  }
+  
+  .comment-input:focus {
+    border: 1px solid #00bcd4;
+  }
+  
+  .comment-submit-button {
+    padding: 0.8rem 2rem;
+    background-color: #00bcd4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .comment-submit-button:hover {
+    background-color: #008C99;
+  }
+
+  .fa-heart {
+    font-size: 17px;
+  }
+  
+  .fa-heart:hover {
+    color: #00bcd4;
+    cursor: pointer;
+  }
+  
+  .fa-heart.liked {
+    color: #00bcd4;
+  }
+
+  .required, input.required::placeholder {
+    color: red;
+    opacity: 0.7;
+  }
+  
+  .required {
+    border: 1px solid red !important;
+  }
+  

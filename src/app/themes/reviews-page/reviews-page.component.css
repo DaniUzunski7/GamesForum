@@ -1,0 +1,135 @@
+/* Container styling */
+.themes-container {
+  position: relative;
+  max-width: 100%;
+  min-height: 100vh;
+  color: #f0f0f0;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+/* Background image */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/783472.jpg"); /* Update with the correct path */
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  z-index: -1;
+}
+
+/* Overlay to ensure content is readable */
+.overlay {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* Page title */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #00bcd4;
+}
+
+/* Themes list */
+.themes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Individual theme card */
+.theme-card {
+  background-color: #2a2a2a;
+  padding: 1.5rem;
+  border-left: 5px solid #00bcd4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.theme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.4);
+}
+
+/* Theme header with title and date */
+.theme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.theme-title {
+  font-size: 1.5rem;
+  color: #00bcd4;
+  margin: 0;
+  transition: color 0.3s ease, transform 0.1s ease;
+  cursor: pointer;
+}
+
+.theme-title:hover {
+  color: #008c99;
+  transform: scale(1.05);
+}
+
+.theme-date {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Game title */
+.theme-game {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ddd;
+}
+
+/* Theme content */
+.theme-content {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.theme-owner {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+/* Theme footer with likes and comments */
+.theme-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.theme-likes,
+.theme-comments {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.fa-heart {
+  font-size: 17px;
+}
+
+.fa-heart:hover {
+  color: #00bcd4;
+  cursor: pointer;
+}
+
+.fa-heart.liked {
+  color: #00bcd4;
+}

@@ -6,7 +6,9 @@ import { TopGamesComponent } from './top-games/top-games.component';
 import { Error404PageComponent } from './error404-page/error404-page.component';
 import { UserProfilePageComponent } from './user/user-profile-page/user-profile-page.component';
 import { AuthGuard } from './guards/authentication.guard';
-import { NewThemeComponent } from './new-theme/new-theme.component';
+import { NewThemeComponent } from './themes/new-theme/new-theme.component';
+import { ReviewsPageComponent } from './themes/reviews-page/reviews-page.component';
+import { ThemeComponent } from './themes/theme-details/theme.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,8 +23,12 @@ export const routes: Routes = [
     {path: 'profile', component: UserProfilePageComponent},
 
     {path: 'newtheme', component: NewThemeComponent, canActivate: [AuthGuard]},
+
+    {path: 'reviews', component: ReviewsPageComponent},
     
     {path: '404', component: Error404PageComponent},
+
+    {path: 'reviews/:id', component: ThemeComponent},
 
     {path: '**', redirectTo: '/404', pathMatch: 'full'}
 ];

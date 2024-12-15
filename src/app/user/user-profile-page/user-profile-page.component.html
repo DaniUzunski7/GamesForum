@@ -1,20 +1,21 @@
 <div class="user-page-container">
-    <!-- Background Image -->
-    <div class="background-image"></div>
-  
-    <!-- Overlay Content -->
-    <div class="overlay">
-      <!-- User Profile Section -->
-      <div class="user-profile">
-        <h1 class="page-title">My Profile</h1>
-  
-        <div class="profile-card">
-          <!-- Profile Picture -->
-          <div class="profile-picture">
-            <img src="/profile-pic.jpg" alt="Profile Picture" class="profile-img">
-          </div>
-  
-          <!-- User Data -->
+  <!-- Background Image -->
+  <div class="background-image"></div>
+
+  <!-- Overlay Content -->
+  <div class="overlay">
+    <!-- User Profile Section -->
+    <div class="user-profile">
+      <h1 class="page-title">My Profile</h1>
+
+      <div class="profile-card">
+        <!-- Profile Picture -->
+        <div class="profile-picture">
+          <img src="/profile-pic.jpg" alt="Profile Picture" class="profile-img">
+        </div>
+
+        @if (!isToggled){
+          <!-- Read Only -->
           <div class="user-info">
             <p><strong>Username:</strong> {{ user.userName }}</p>
             <p><strong>Full Name:</strong> {{ user.name }}</p>
@@ -27,10 +28,63 @@
               <p><strong>Password:</strong> {{ this.pass }}</p>
             </div>
             <p><strong>Member Since:</strong> {{ dateConverter(user.createdAt) }} </p>
+            <button class="edit-btn" (click)="togle()">Edit</button>
           </div>
+        } @else {          
+          <!-- Edit Mode -->
+          <div class="edit-profile">
+            <h2 class="edit-title">Edit Profile</h2>
+            
+            <form class="edit-form" #editForm="ngForm" (ngSubmit)="editProfile(editForm)">
+              
+              <div class="form-group">
+                <label for="userName">Username</label>
+                <input type="text" id="userName" [(ngModel)]="user.userName" name="userName" ngModel #userName="ngModel" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" [(ngModel)]="user.name" name="name"  ngModel #name="ngModel" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" [(ngModel)]="user.email" name="email"  ngModel #email="ngModel" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="mobile">Phone Number</label>
+              <input type="text" id="mobile" [(ngModel)]="user.mobile" name="mobile"  ngModel #mobile="ngModel">
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-field">
+                <input 
+                  type="text" 
+                  id="password" 
+                  [(ngModel)]="user.password"  
+                  name="password" minlength="6"  
+                  ngModel 
+                  #password="ngModel" 
+                  [class.required]=" password.touched && password.invalid" 
+                  [attr.placeholder]="password.invalid && password.touched ? 'Password is required' : 'Enter your password'"
+                  required>
+                @if (password.invalid && password.touched) {
+                  <p class="required-mess">Password should be at least 6 characters long</p>
+                }
+              </div>
+            </div>
+            
+            <div class="form-actions">
+              <button type="submit" class="save-button" [disabled]="editForm.invalid">Save</button>
+              <button type="button" class="cancel-button" (click)="cancelEdit()">Cancel</button>
+            </div>
+          </form>
         </div>
+      }
+
       </div>
     </div>
   </div>
-  
-  
+</div>
