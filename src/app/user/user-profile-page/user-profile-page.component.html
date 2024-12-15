@@ -6,7 +6,7 @@
     <div class="overlay">
       <!-- User Profile Section -->
       <div class="user-profile">
-        <h1 class="page-title">User Profile</h1>
+        <h1 class="page-title">My Profile</h1>
   
         <div class="profile-card">
           <!-- Profile Picture -->
@@ -16,11 +16,17 @@
   
           <!-- User Data -->
           <div class="user-info">
-            <p><strong>Username:</strong> {{ '' }}</p>
-            <p><strong>First Name:</strong> {{ '' }}</p>
-            <p><strong>Last Name:</strong> {{ 'user.lastName' }}</p>
-            <p><strong>Email:</strong> {{ 'user.email' }}</p>
-            <p><strong>Member Since:</strong> {{ '' }}</p>
+            <p><strong>Username:</strong> {{ user.userName }}</p>
+            <p><strong>Full Name:</strong> {{ user.name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            @if (user.mobile){
+              <p><strong>Phone number:</strong> {{ user.mobile }}</p>
+            }
+            <div class="hidePass">
+              <i (click)="showPassword()" class="fa-regular fa-eye"></i>
+              <p><strong>Password:</strong> {{ this.pass }}</p>
+            </div>
+            <p><strong>Member Since:</strong> {{ dateConverter(user.createdAt) }} </p>
           </div>
         </div>
       </div>

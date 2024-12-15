@@ -1,0 +1,103 @@
+<div class="auth-container">
+    <!-- Background Image -->
+    <div class="background-image"></div>
+  
+    <!-- Overlay Content -->
+    <div class="auth-overlay">
+      <h1 class="auth-title">Register on GameForum</h1>
+      <form class="auth-form" #formReg="ngForm" (ngSubmit)="register(formReg)">
+        <div class="form-group">
+          <label for="user-name" class="required-star">User Name</label>
+          <input 
+            type="text" 
+            id="user-name"
+            name="user-name"
+            placeholder="Enter your user name"
+            ngModel
+            #userInput="ngModel"
+            minlength="4"
+            [class.required]=" userInput.touched && userInput.invalid" 
+            required
+          />
+          @if (userInput.invalid && userInput.touched) {
+            <p class="required-mess">User name should be at least 4 characters long</p>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="name" class="required-star">Name</label>
+          <input 
+            type="text" 
+            id="name"
+            name="name" 
+            placeholder="Enter your name" 
+            ngModel
+            #nameInput="ngModel"
+            required  
+          />
+        </div>
+
+        <div class="form-group ">
+          <label for="mobile-phone" class="optional">Mobile Phone</label>
+          <input 
+            type="text"
+            id="mobile-phone"
+            name="mobile-phone"
+            placeholder="ex: 089 765 4321"
+            ngModel
+            #phoneInput="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email" class="required-star">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email"
+            [appEmailValidator]="domains"
+            [class.required]=" emailInput.touched && emailInput.invalid || emailInput.touched && emailInput?.errors?.['appEmailValidator']" 
+            [attr.placeholder]="emailInput.invalid && emailInput.touched ? 'Email required' : 'Enter your email'"
+            placeholder="Enter your email" 
+            ngModel
+            #emailInput="ngModel"
+            required  
+          />
+        </div>
+        <div class="form-group">
+          <label for="password" class="required-star">Password</label>
+          <input 
+            type="password" 
+            id="password"
+            name="password" 
+            placeholder="******" 
+            ngModel
+            #passInput="ngModel"
+            minlength="6"
+            [class.required]=" passInput.touched && passInput.invalid" 
+            [attr.placeholder]="passInput.invalid && passInput.touched ? 'Password is required' : 'Enter your password'"
+            required  
+          />
+          @if (passInput.invalid && passInput.touched) {
+            <p class="required-mess">Password should be at least 6 characters long</p>
+          }
+        </div>
+        <div class="form-group">
+          <label for="rePass" class="required-star">Repeat Password</label>
+          <input 
+            type="password" 
+            id="rePass"
+            name="rePass" 
+            placeholder="Repeat your password" 
+            ngModel
+            #rePassInput="ngModel"
+            required  
+          />
+        </div>
+        <button type="submit" class="auth-btn" [disabled]="formReg.invalid">Register</button>
+        <p class="auth-link">
+          Already have an account? <a routerLink="/login">Login here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  

@@ -6,9 +6,9 @@ import { firebaseConfig } from './enviroments/enviroment';
 
 
 
+
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
-
 
   const app = initializeApp(firebaseConfig)
 

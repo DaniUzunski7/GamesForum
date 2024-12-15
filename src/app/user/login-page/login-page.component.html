@@ -1,0 +1,49 @@
+<div class="auth-container">
+    <!-- Background Image -->
+    <div class="background-image"></div>
+  
+    <!-- Overlay Content -->
+    <div class="auth-overlay">
+      <h1 class="auth-title">Login to GameForum</h1> 
+      <form class="auth-form" #form="ngForm" (ngSubmit)="login(form)">
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email"
+          placeholder="Enter your email" 
+          ngModel 
+          #emailInput="ngModel" 
+          [appEmailValidator]="domains"
+          [class.required]=" emailInput.touched && emailInput.invalid || emailInput.touched && emailInput?.errors?.['appEmailValidator']" 
+          [attr.placeholder]="emailInput.invalid && emailInput.touched ? 'Email required' : 'Enter your email'"
+          required
+        />
+        </div>
+      
+        <div class="form-group">
+          <label for="password">Password</label>
+        <input 
+          type="password"
+          id="password"
+          name="password" 
+          placeholder="Enter your password" 
+          ngModel  
+          #passInput="ngModel"
+          required
+          minlength="6"
+          [class.required]=" passInput.touched && passInput.invalid" 
+          [attr.placeholder]="passInput.invalid && passInput.touched ? 'Password is required' : 'Enter your password'"
+        />
+        @if (passInput.invalid && passInput.touched) {
+          <p class="required-mess">Password should be at least 6 characters long</p>
+        }
+        </div>
+        <button class="auth-btn" [disabled]="form.invalid">Login</button>
+        <p class="auth-link">Don't have an account? <a routerLink="/register">Register here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  

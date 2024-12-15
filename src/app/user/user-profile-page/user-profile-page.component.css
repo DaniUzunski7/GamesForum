@@ -81,9 +81,17 @@
   .user-info strong {
     color: #00bcd4;
   }
-  
-  .user-info p:hover {
-    color: #fff; /* Highlight on hover */
+
+  /* show/hide password */
+  .hidePass {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  i {
     cursor: pointer;
   }
   

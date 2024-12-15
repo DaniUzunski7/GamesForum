@@ -15,7 +15,7 @@ export class HeaderComponent {
   }
 
   get firstName(): string {
-    return this.userService.user?.firstName || '';
+    return this.userService.user?.userName || '';
   }
   
   constructor(private userService: UserService, private router: Router) {}

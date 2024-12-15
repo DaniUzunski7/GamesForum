@@ -1,89 +1,153 @@
-
 .home-container {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background-color: #121212; /* Fallback color in case image is not loaded */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Background image setup */
-  .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:url('/783472.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(50%); /* Darken the background image */
-  }
-  
-  /* Overlay for content */
-  .overlay {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    color: #fff;
-  }
-  
-  /* Welcoming text styling */
-  .welcome-text {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  }
-  
-  /* Search container */
-  .search-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  /* Search input field */
-  .search-field {
-    padding: 0.8rem 1.5rem;
-    font-size: 1.1rem;
-    border: 2px solid #00bcd4;
-    border-radius: 30px;
-    background-color: transparent;
-    color: #fff;
-    outline: none;
-    width: 350px;
-    transition: border-color 0.3s ease;
-  }
-  
-  /* Search button */
-  .search-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 1.1rem;
-    color: #fff;
-    background-color: #00bcd4; /* Light blue accent */
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search-btn:hover {
-    background-color: #008ba3; /* Slightly darker blue on hover */
-  }
-  
-  /* Hover effect for search input */
-  .search-field:focus {
-    border-color: #008ba3; /* Change border color on focus */
-  }
-  
-  .welcome-message {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #fff;
-    margin-top: 20px;
-    padding: 20px;
-  }
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #121212; /* Fallback color in case image is not loaded */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background image setup */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/783472.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%); /* Darken the background image */
+}
+
+/* Overlay for content */
+.overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+/* Welcoming text styling */
+.welcome-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fffffff3;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0.5), rgba(25, 25, 25, 0.5));
+  border: 3px solid #00bcd4;
+  border-radius: 8px;
+  text-shadow: 2px 2px 5px rgba(0, 188, 212, 0.3);
+  display: inline-block;
+  position: relative;
+}
+
+.welcome-message {
+  width: 60%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffffe1;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  padding: 15px;
+  background: linear-gradient(90deg, rgba(25, 25, 25, 0.5), rgba(25, 25, 25, 0.5));
+  border: 3px solid #00bcd4;
+  border-radius: 8px;
+  text-shadow: 2px 2px 5px rgba(0, 188, 212, 0.3);
+  display: inline-block;
+  position: relative;
+}
+
+.welcome-text::before, .welcome-message::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 20px;
+  height: 20px;
+  background-color: #00bcd4;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.welcome-text::after, .welcome-message::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  right: -7px;
+  width: 20px;
+  height: 20px;
+  background-color: #00bcd4;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Search input field */
+.search-field {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #00bcd4;
+  border-radius: 30px;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  width: 350px;
+  transition: border-color 0.3s ease;
+}
+
+/* Search button */
+.search-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  color: #fff;
+  background-color: #00bcd4; /* Light blue accent */
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #008ba3; /* Slightly darker blue on hover */
+}
+
+/* Hover effect for search input */
+.search-field:focus {
+  border-color: #008ba3; /* Change border color on focus */
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2a2a2a;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #00bcd4;
+}
