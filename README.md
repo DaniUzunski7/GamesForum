@@ -1,69 +1,122 @@
-🕹️ GamesForum
+ 🕹️ GamesForum
+
 Welcome to GamesForum! This is a dynamic web application where users can create discussions, share reviews, and stay updated on the latest games. The project is built using Angular and Firebase for a seamless and interactive experience.
 
-🚀 Features
+
+🚀 FEATURES
+
 User Authentication: Register and log in to access personalized features.
+
 Create Discussions: Start discussions about your favorite games.
+
 Top Games Page: View the top 10 games of the year with pagination.
+
 Comments & Likes: Engage with discussions by commenting and liking posts.
+
 User Profile: View and edit your profile information.
+
 Theme Details Page: Detailed view for each game discussion with comments.
-🛠️ Technologies Used
+
+
+
+🛠️ TECHNOLOGIES USED
+
 Frontend: Angular 18
+
 Backend: Firebase
+
 Styling: CSS with dark tones and light blue highlights
+
 Icons: Font Awesome
+
 Routing: Angular Router
+
 State Management: Local Storage
-📂 Project Structure
+
+📂 PROJECT STRUCTURE
+
 lua
 Copy code
 GamesForum/
+
 │-- src/
+
 │   │-- app/
+
 │   │   │-- components/
+
 │   │   │   │-- home/
+
 │   │   │   │-- login/
+
 │   │   │   │-- register/
+
 │   │   │   │-- user-profile/
+
 │   │   │   │-- new-theme/
+
 │   │   │   │-- theme-details/
+
 │   │   │-- services/
+
 │   │   │   │-- auth.service.ts
+
 │   │   │   │-- theme.service.ts
+
 │   │-- assets/
+
 │   │   │-- images/
+
 │   │-- index.html
+
 │-- README.md
+
 │-- package.json
-⚙️ Setup Instructions
+
+
+⚙️ SETUP INSTRUCTIONS
+
 Clone the Repository:
 
 bash
+
 Copy code
+
 git clone https://github.com/DaniUzunski7/GamesForum.git
+
 cd GamesForum
+
 Install Dependencies:
 
 bash
+
 Copy code
+
 npm install
+
 Run the Project:
 
 bash
+
 Copy code
+
 ng serve
+
 Open in Browser:
 
 Navigate to http://localhost:4200.
 
-🔐 Firebase Configuration
+
+🔐 FIREBASE CONFIGURATION
+
 Create a Firebase Project at Firebase Console.
 
 Add your Firebase configuration to src/environments/environment.ts:
 
 typescript
+
 Copy code
+
 export const environment = {
   firebaseConfig: {
     apiKey: "YOUR_API_KEY",
@@ -80,7 +133,8 @@ Install Firebase:
 bash
 Copy code
 npm install firebase
-📝 How to Use the Application
+
+📝 HOW TO USE THE APPLICATION
 Register a New User:
 
 Go to the Register Page and create a new account.
@@ -96,10 +150,13 @@ Browse existing discussions and comment on them.
 Edit Profile:
 
 Visit the User Profile page to edit your personal information.
-🐞 Troubleshooting
+
+🐞 TROUBLESHOOTING
+
 Common Issues:
 Angular Forms Not Working: Ensure FormsModule is imported in the respective module.
 Firebase Errors: Double-check your Firebase configuration in environment.ts.
+
 📸 Screenshots
 Home Page:
 
@@ -107,10 +164,10 @@ Discussion Page:
 
 User Profile:
 
-📜 License
+📜 LICENSE
 This project is licensed under the MIT License.
 
-🤝 Contributing
+🤝 CONTRIBUTING
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
 Fork the repository.
@@ -119,7 +176,8 @@ Make your changes.
 Commit your changes: git commit -m "Add new feature".
 Push to the branch: git push origin feature-branch.
 Submit a pull request.
-📧 Contact
+
+📧 CONTACTS
 Author: Dani Uzunski
 GitHub: DaniUzunski7
 Email: dani.pleven@icloud.com
