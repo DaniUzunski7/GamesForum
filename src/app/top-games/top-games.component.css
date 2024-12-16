@@ -156,3 +156,69 @@
     font-size: 1rem;
   }
   
+  /* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 2rem 1.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .pagination-btn {
+    padding: 0.7rem 1.3rem;
+  }
+
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2 columns for tablets */
+  }
+
+  .game-title {
+    font-size: 1.1rem;
+  }
+
+  .game-description {
+    font-size: 0.9rem;
+  }
+
+  .game-info li {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 480px) {
+  .overlay {
+    padding: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+
+  .pagination-btn {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;  /* 1 column for mobile */
+  }
+
+  .game-title {
+    font-size: 1rem;
+  }
+
+  .game-description {
+    font-size: 0.85rem;
+  }
+
+  .game-info li {
+    font-size: 0.8rem;
+  }
+}

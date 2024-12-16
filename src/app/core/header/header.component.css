@@ -7,20 +7,28 @@
   background-color: #1e1e1e;
   color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+}
+
+.logo {
+  letter-spacing: 1.5px;
 }
 
 .logo i:hover {
   color: #00bcd4;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 /* Navigation menu styling */
 .nav-menu {
-  margin-left: 100px;
+  display: flex;
 }
 
 .nav-menu ul {
   display: flex;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -28,7 +36,7 @@
 
 .nav-menu li {
   font-weight: 1900;
-  margin: 0 1.5rem;
+  margin: 0 1rem;
   padding: 0.5rem 1.5rem;
   text-decoration: none;
   color: #fff;
@@ -57,6 +65,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
+  gap: 0.5rem;
 }
 
 .auth-buttons .login-btn {
@@ -77,4 +86,79 @@
 .auth-buttons .register-btn:hover {
   background-color: #00bcd4;
   color: #121212;
+}
+
+.hamburger {
+  display: none;  /* Hidden by default */
+  font-size: 1.8rem;
+  color: #ccc;
+  cursor: pointer;
+  position: absolute;  /* Ensure it stays in the header */
+  top: 50%;            /* Align vertically */
+  right: 1rem;         /* Align to the right side */
+  transform: translateY(-50%);
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;    /* Dropdown appears below the header */
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2);
+    z-index: 9;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-menu.active {
+    display: flex; /* Show nav menu when active class is applied */
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  i {
+    font-size: large;
+    letter-spacing: 2.5px;
+  }
+
+  .logo  {
+    display: none;
+  }  
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .logo  {
+    display: none;
+  }
+
+  .auth-buttons .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .hamburger {
+    font-size: 1.5rem;
+  }
 }

@@ -133,3 +133,64 @@
 .fa-heart.liked {
   color: #00bcd4;
 }
+
+@media (max-width: 768px) {
+    .themes-list {
+      grid-template-columns: repeat(2, 1fr);  /* 2 columns for tablets */
+    }
+  
+    .theme-title {
+      font-size: 1.3rem;
+    }
+  
+    .theme-game,
+    .theme-content,
+    .theme-owner {
+      font-size: 0.95rem;
+    }
+  
+    .theme-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .theme-likes,
+    .theme-comments {
+      margin-top: 0.5rem;
+    }
+  }
+  
+  /* Small Screens (Mobile Devices) */
+  @media (max-width: 480px) {
+    .themes-list {
+      grid-template-columns: 1fr;  /* Stack theme cards on mobile */
+    }
+  
+    .page-title {
+      font-size: 1.6rem;
+    }
+  
+    .theme-card {
+      padding: 1rem;
+    }
+  
+    .theme-title {
+      font-size: 1.2rem;
+    }
+  
+    .theme-game,
+    .theme-content,
+    .theme-owner {
+      font-size: 0.9rem;
+    }
+  
+    .theme-footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .theme-likes,
+    .theme-comments {
+      margin-top: 0.5rem;
+    }
+  }

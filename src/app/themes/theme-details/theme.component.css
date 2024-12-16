@@ -173,4 +173,86 @@
   .required {
     border: 1px solid red !important;
   }
+
+  /* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+    .overlay {
+      padding: 2rem 1.5rem;
+    }
+  
+    .theme-title {
+      font-size: 2rem;
+    }
+  
+    .theme-game {
+      font-size: 1rem;
+    }
+  
+    .theme-content {
+      font-size: 1rem;
+    }
+  
+    .theme-likes {
+      font-size: 1rem;
+    }
+  
+    .comments-title {
+      font-size: 1.5rem;
+    }
+  
+    .comment-likes {
+      font-size: 1rem;
+    }
+  
+    .comment-input {
+      font-size: 0.9rem;
+      padding: 0.8rem;
+    }
+  
+    .comment-submit-button {
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+    }
+  }
+  
+  /* Small Screens (Mobile Devices) */
+  @media (max-width: 480px) {
+    .overlay {
+      padding: 1.5rem;
+    }
+  
+    .theme-title {
+      font-size: 1.6rem;
+    }
+  
+    .theme-game {
+      font-size: 0.9rem;
+    }
+  
+    .theme-content {
+      font-size: 0.9rem;
+    }
+  
+    .theme-likes {
+      font-size: 1rem;
+    }
+  
+    .comments-title {
+      font-size: 1.2rem;
+    }
+  
+    .comment-likes {
+      font-size: 0.9rem;
+    }
+  
+    .comment-input {
+      font-size: 0.8rem;
+      padding: 0.7rem;
+    }
+  
+    .comment-submit-button {
+      font-size: 0.8rem;
+      padding: 0.7rem 1.2rem;
+    }
+  }
   

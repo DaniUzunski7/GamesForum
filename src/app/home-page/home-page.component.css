@@ -151,3 +151,74 @@ button {
 button:hover {
   background-color: #00bcd4;
 }
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .welcome-text {
+    font-size: 2.5rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-field {
+    font-size: 1rem;
+    padding: 0.8rem;
+    width: 100%;
+  }
+
+  .search-btn {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .welcome-message {
+    font-size: 1.1rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .auth-buttons .btn {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .welcome-text {
+    font-size: 1.8rem;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .search-field {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .search-btn {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    width: 100%;
+  }
+
+  .welcome-message {
+    font-size: 1rem;
+  }
+
+  .auth-buttons .btn {
+    font-size: 0.8rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

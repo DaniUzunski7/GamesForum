@@ -124,3 +124,56 @@ input::placeholder {
 .valid {
   border: #4caf50;
 }
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .auth-overlay {
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.8rem;
+  }
+
+  .auth-btn {
+    padding: 0.9rem 1.5rem;
+  }
+
+  .form-group input {
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
+
+  .auth-link {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-overlay {
+    padding: 1.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+
+  .auth-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .auth-link {
+    font-size: 0.8rem;
+  }
+}

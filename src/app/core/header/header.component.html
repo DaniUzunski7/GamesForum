@@ -1,19 +1,25 @@
 <header class="header">
     <div class="logo">
-        <i routerLink="/home" class="fa-solid fa-gamepad fa-2x"></i>
+        <i routerLink="/home" class="fa-solid fa-gamepad fa-2x">GamesForum</i>
     </div>
-    <nav class="nav-menu">
+
+    <div class="hamburger" (click)="toggleMenu()">
+        <i class="fa-solid fa-bars"> Menu</i>
+    </div>
+    
+    <nav class="nav-menu" [class.active]="menuOpen">
         <ul>
-            <li routerLink="/home">Home</li>
+            <li routerLink="/home" (click)="closeMenu()">Home</li>
             
             <!-- Create  -->
-            <li routerLink="/newtheme">Start Discussion</li>
+            <li routerLink="/newtheme" (click)="closeMenu()">Start Discussion</li>
             
             <!-- Browse through reviews -->
-            <li routerLink="reviews">Reviews Section</li>
+            <li routerLink="reviews" (click)="closeMenu()">Reviews Section</li>
             
             <!-- /* Games to come out soon */ -->
-            <li routerLink="/top-games">Top Games</li>
+            <li routerLink="/top-games" (click)="closeMenu()">Top Games</li>
+
         </ul>
     </nav>
     @if(isLogged){

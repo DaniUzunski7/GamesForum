@@ -10,6 +10,8 @@ import { UserService } from '../../user/user.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  menuOpen: boolean = false;
+
   get isLogged(): boolean {
       return this.userService.isLogged;
   }
@@ -27,5 +29,13 @@ export class HeaderComponent {
 
   userName(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');    
+  }
+
+  toggleMenu(){
+    this.menuOpen = !this.menuOpen
+  }
+
+  closeMenu(){
+    this.menuOpen = false;
   }
 }

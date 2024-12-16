@@ -125,3 +125,53 @@
     opacity: 0.75;
   }  
   
+
+  @media (max-width: 768px) {
+    .overlay {
+      padding: 1.5rem;
+    }
+  
+    .page-title {
+      font-size: 1.8rem;
+    }
+  
+    .form-group input,
+    .form-group textarea {
+      font-size: 0.95rem;
+      padding: 0.9rem;
+    }
+  
+    .button {
+      padding: 0.9rem 1.3rem;
+    }
+  
+    .required-mess {
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Small Screens (Mobile Devices) */
+  @media (max-width: 480px) {
+    .overlay {
+      padding: 1rem;
+    }
+  
+    .page-title {
+      font-size: 1.5rem;
+    }
+  
+    .form-group input,
+    .form-group textarea {
+      font-size: 0.9rem;
+      padding: 0.8rem;
+    }
+  
+    .button {
+      font-size: 0.9rem;
+      padding: 0.8rem 1.2rem;
+    }
+  
+    .required-mess {
+      font-size: 0.7rem;
+    }
+  }

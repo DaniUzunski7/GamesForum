@@ -1,6 +1,5 @@
 .user-page-container {
     position: relative;
-    /* height: 100vh; */
     min-height: 100vh;
     width: 100%;
     background-color: #1e1e1e;
@@ -217,18 +216,64 @@
   opacity: 0.75;
 }
 
-  @media screen and (max-width: 768px) {
-    .profile-img {
-      width: 150px; /* Smaller profile picture on smaller screens */
-      height: 150px;
-    }
+  /* Responsive Design */
+@media (max-width: 768px) { 
   
-    .page-title {
-      font-size: 2rem; /* Smaller title on mobile screens */
-    }
-  
-    .user-info {
-      font-size: 1.2rem; /* Smaller font size on mobile */
-    }
+  .overlay {
+    padding: 1.5rem;
   }
+
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .form-group input {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .edit-btn,
+  .save-button,
+  .cancel-button {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+}
+
+/* Small screens (mobile devices) */
+@media (max-width: 480px) {
   
+  .overlay {
+    padding: 1rem;
+  }
+
+  .profile-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  .edit-btn,
+  .save-button,
+  .cancel-button {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
