@@ -135,18 +135,23 @@ Copy code
 npm install firebase
 
 📝 HOW TO USE THE APPLICATION
+
 Register a New User:
 
 Go to the Register Page and create a new account.
+
 Login:
 
 Use your credentials to log in.
+
 Create a Discussion:
 
 Navigate to "New Discussion" and fill out the form to start a discussion.
+
 View Discussions:
 
 Browse existing discussions and comment on them.
+
 Edit Profile:
 
 Visit the User Profile page to edit your personal information.
@@ -154,10 +159,13 @@ Visit the User Profile page to edit your personal information.
 🐞 TROUBLESHOOTING
 
 Common Issues:
+
 Angular Forms Not Working: Ensure FormsModule is imported in the respective module.
+
 Firebase Errors: Double-check your Firebase configuration in environment.ts.
 
 📸 Screenshots
+
 Home Page:
 
 Discussion Page:
@@ -165,19 +173,27 @@ Discussion Page:
 User Profile:
 
 📜 LICENSE
+
 This project is licensed under the MIT License.
 
 🤝 CONTRIBUTING
+
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
 Fork the repository.
+
 Create a new branch: git checkout -b feature-branch.
+
 Make your changes.
+
 Commit your changes: git commit -m "Add new feature".
+
 Push to the branch: git push origin feature-branch.
+
 Submit a pull request.
 
 📧 CONTACTS
+
 Author: Dani Uzunski
 GitHub: DaniUzunski7
 Email: dani.pleven@icloud.com
