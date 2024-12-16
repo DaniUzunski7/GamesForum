@@ -1,27 +1,125 @@
-# CarsForum
+🕹️ GamesForum
+Welcome to GamesForum! This is a dynamic web application where users can create discussions, share reviews, and stay updated on the latest games. The project is built using Angular and Firebase for a seamless and interactive experience.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+🚀 Features
+User Authentication: Register and log in to access personalized features.
+Create Discussions: Start discussions about your favorite games.
+Top Games Page: View the top 10 games of the year with pagination.
+Comments & Likes: Engage with discussions by commenting and liking posts.
+User Profile: View and edit your profile information.
+Theme Details Page: Detailed view for each game discussion with comments.
+🛠️ Technologies Used
+Frontend: Angular 18
+Backend: Firebase
+Styling: CSS with dark tones and light blue highlights
+Icons: Font Awesome
+Routing: Angular Router
+State Management: Local Storage
+📂 Project Structure
+lua
+Copy code
+GamesForum/
+│-- src/
+│   │-- app/
+│   │   │-- components/
+│   │   │   │-- home/
+│   │   │   │-- login/
+│   │   │   │-- register/
+│   │   │   │-- user-profile/
+│   │   │   │-- new-theme/
+│   │   │   │-- theme-details/
+│   │   │-- services/
+│   │   │   │-- auth.service.ts
+│   │   │   │-- theme.service.ts
+│   │-- assets/
+│   │   │-- images/
+│   │-- index.html
+│-- README.md
+│-- package.json
+⚙️ Setup Instructions
+Clone the Repository:
 
-## Development server
+bash
+Copy code
+git clone https://github.com/DaniUzunski7/GamesForum.git
+cd GamesForum
+Install Dependencies:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+bash
+Copy code
+npm install
+Run the Project:
 
-## Code scaffolding
+bash
+Copy code
+ng serve
+Open in Browser:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navigate to http://localhost:4200.
 
-## Build
+🔐 Firebase Configuration
+Create a Firebase Project at Firebase Console.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add your Firebase configuration to src/environments/environment.ts:
 
-## Running unit tests
+typescript
+Copy code
+export const environment = {
+  firebaseConfig: {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  },
+  production: false
+};
+Install Firebase:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+bash
+Copy code
+npm install firebase
+📝 How to Use the Application
+Register a New User:
 
-## Running end-to-end tests
+Go to the Register Page and create a new account.
+Login:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Use your credentials to log in.
+Create a Discussion:
 
-## Further help
+Navigate to "New Discussion" and fill out the form to start a discussion.
+View Discussions:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Browse existing discussions and comment on them.
+Edit Profile:
+
+Visit the User Profile page to edit your personal information.
+🐞 Troubleshooting
+Common Issues:
+Angular Forms Not Working: Ensure FormsModule is imported in the respective module.
+Firebase Errors: Double-check your Firebase configuration in environment.ts.
+📸 Screenshots
+Home Page:
+
+Discussion Page:
+
+User Profile:
+
+📜 License
+This project is licensed under the MIT License.
+
+🤝 Contributing
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
+
+Fork the repository.
+Create a new branch: git checkout -b feature-branch.
+Make your changes.
+Commit your changes: git commit -m "Add new feature".
+Push to the branch: git push origin feature-branch.
+Submit a pull request.
+📧 Contact
+Author: Dani Uzunski
+GitHub: DaniUzunski7
+Email: dani.pleven@icloud.com
