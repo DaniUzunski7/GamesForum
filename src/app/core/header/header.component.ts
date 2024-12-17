@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../user/user.service';
+import { AuthService } from '../../user/auth.service';
+import { userInterface } from '../../types/userInterface';
 
 @Component({
   selector: 'app-header',
@@ -12,23 +14,20 @@ import { UserService } from '../../user/user.service';
 export class HeaderComponent {
   menuOpen: boolean = false;
 
-  get isLogged(): boolean {
-      return this.userService.isLogged;
+  get isLogged() {
+      return this.authService.currUser();
   }
 
   get firstName(): string {
     return this.userService.user?.userName || '';
   }
   
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private authService: AuthService) {}
+
 
   logout() {
-    this.userService.logout();
-    this.router.navigate(['/home'])
-  }
-
-  userName(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');    
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 
   toggleMenu(){

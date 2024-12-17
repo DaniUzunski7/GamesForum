@@ -52,7 +52,6 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Authentication buttons styling */
 .auth-buttons {
   display: flex;
   gap: 1rem;
@@ -89,13 +88,13 @@
 }
 
 .hamburger {
-  display: none;  /* Hidden by default */
+  display: none; /* hidden */
   font-size: 1.8rem;
   color: #ccc;
   cursor: pointer;
-  position: absolute;  /* Ensure it stays in the header */
-  top: 50%;            /* Align vertically */
-  right: 1rem;         /* Align to the right side */
+  position: absolute;
+  top: 50%;
+  right: 1rem;
   transform: translateY(-50%);
 }
 

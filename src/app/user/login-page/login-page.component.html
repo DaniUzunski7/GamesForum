@@ -2,6 +2,11 @@
     <!-- Background Image -->
     <div class="background-image"></div>
   
+    @if (errorMess){
+      <div>
+        <p>{{errorMess}}</p>
+      </div>
+    }
     <!-- Overlay Content -->
     <div class="auth-overlay">
       <h1 class="auth-title">Login to GameForum</h1> 

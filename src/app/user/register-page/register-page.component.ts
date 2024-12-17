@@ -5,6 +5,8 @@ import { EmailValidatorDirective } from "../../directives/email.directive";
 import { UserService } from "../user.service";
 import { DOMAINS } from "../../constants/domains";
 import { passwordValidator } from "../../utils/password.validator";
+import { AuthService } from "../auth.service";
+import { userForAuth } from "../../types/user";
 
 
 @Component({
@@ -19,24 +21,24 @@ export class RegisterPageComponent {
   @ViewChild("rePassassInput") rePassInput!: NgModel;
 
   domains = DOMAINS;
+  errorMessage: string | null = null;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private authService: AuthService) {}
 
   register(formReg: NgForm) {
-
-    if (formReg.valid) {
-      console.log("Form is valid");
-
-      this.userService.register();
-      this.router.navigate(["/home"]);
-    }  else {
-      console.log("Not valid");
-      return;
-    }
+    const form: userForAuth = formReg.value;
+    
+    this.authService
+    .register(form.userName, form.email, form.password)
+    .subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.errorMessage = err.code;
+      }
+    });
 
    passwordValidator
-
-    this.userService.register();
-    this.router.navigate(["/home"]);
   }
 }

@@ -32,23 +32,29 @@
             </ul>
         </div>
 
-        <!-- Comment Submission Section -->
-        <div class="comment-form">
-            <form #form="ngForm" (ngSubmit)="postComment(form)">
-                <input 
-                id="comment"
-                name="comment"
-                ngModel
-                #comment="ngModel"
-                placeholder="Write your comment..." 
-                class="comment-input" 
-                minlength="3"
-                maxlength="120" 
-                [class.required]=" comment.touched && comment.invalid" 
-                [attr.placeholder]="comment.invalid && comment.touched ? 'Comment should be at least 3 characters long' : 'Write your comment...'"
-                required>
-                <button class="comment-submit-button" [disabled]="form.invalid">Post Comment</button>
-            </form>
-        </div>
+        @if(authService.currUser()){
+            <div class="comment-form">
+                <form #form="ngForm" (ngSubmit)="postComment(form)">
+                    <input 
+                    id="comment"
+                    name="comment"
+                    ngModel
+                    #comment="ngModel"
+                    placeholder="Write your comment..." 
+                    class="comment-input" 
+                    minlength="3"
+                    maxlength="120" 
+                    [class.required]=" comment.touched && comment.invalid" 
+                    [attr.placeholder]="comment.invalid && comment.touched ? 'Comment should be at least 3 characters long' : 'Write your comment...'"
+                    required>
+                    <button class="comment-submit-button" [disabled]="form.invalid">Post Comment</button>
+                </form>
+            </div>
+        } @else {
+            <div class="login">
+                <p>In order to write a comment press:</p>
+                <p class="blue-underline" routerLink="/login">Login</p>
+            </div>
+        }
     </div>
 </div>

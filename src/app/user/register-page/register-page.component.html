@@ -5,13 +5,19 @@
     <!-- Overlay Content -->
     <div class="auth-overlay">
       <h1 class="auth-title">Register on GameForum</h1>
+
+      @if (errorMessage){
+        <div>
+          <p>{{errorMessage}}</p>
+        </div>
+      }
       <form class="auth-form" #formReg="ngForm" (ngSubmit)="register(formReg)">
         <div class="form-group">
-          <label for="user-name" class="required-star">User Name</label>
+          <label for="userName" class="required-star">User Name</label>
           <input 
             type="text" 
-            id="user-name"
-            name="user-name"
+            id="userName"
+            name="userName"
             placeholder="Enter your user name"
             ngModel
             #userInput="ngModel"

@@ -5,6 +5,8 @@ import { userForAuth } from '../types/user';
 import { NgForm } from '@angular/forms';
 import { themes } from '../data/themes';
 import { UserService } from '../user/user.service';
+import { userInterface } from '../types/userInterface';
+import { AuthService } from '../user/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,12 @@ import { UserService } from '../user/user.service';
 export class ThemesService {
   currId: number = 7;
   
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthService) { }
   
   addNewTheme(form: NgForm) {
-    const user: userForAuth = this.userService.getUser();
+    const user = this.authService.currUser()!;
+    console.log(user);
+    
     const {title, game, content} = form.value;
 
     const addTheme: Theme = {
@@ -34,7 +38,7 @@ export class ThemesService {
   }
 
   addNewComment(form: NgForm, theme: Theme){
-    const user: userForAuth = this.userService.getUser();
+    const user: userInterface = this.authService.currUser()!;
     const {comment} = form.value;
 
     const addComment: userComment = {

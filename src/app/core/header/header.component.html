@@ -24,7 +24,7 @@
     </nav>
     @if(isLogged){
         <div class="auth-buttons">
-            <button routerLink="/profile" class="btn login-btn">{{firstName}} <i class="fa-solid fa-user-astronaut"></i></button>
+            <button routerLink="/profile" class="btn login-btn">{{isLogged.userName}} <i class="fa-solid fa-user-astronaut"></i></button>
             <button (click)="logout()" class="btn register-btn">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
     } @else {

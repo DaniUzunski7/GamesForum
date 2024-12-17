@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Theme } from '../../types/theme';
 import { themes } from '../../data/themes';
@@ -7,6 +7,7 @@ import { userComment } from '../../types/comment';
 import { likingFn } from '../../utils/liking';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ThemesService } from '../themes.service';
+import { AuthService } from '../../user/auth.service';
 
 @Component({
   selector: 'app-theme',
@@ -17,6 +18,8 @@ import { ThemesService } from '../themes.service';
   providers: [DatePipe]
 })
 export class ThemeComponent implements OnInit{
+  authService = inject(AuthService);
+
   themes: Theme[] = themes;
   currComments: userComment[] | undefined;
   currTheme: Theme | undefined;
