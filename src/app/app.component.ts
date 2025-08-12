@@ -6,7 +6,7 @@ import {FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthService } from './user/auth.service';
 import { FirebaseDataService } from './data/firebase.service';
-import { Firestore, getFirestore } from 'firebase/firestore';
+import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../enviroments/enviroment';
 
@@ -28,7 +28,6 @@ export class AppComponent implements OnInit{
   constructor(private dataService: FirebaseDataService) {}
 
   ngOnInit(): void {
-    console.log(this.fireStore);
     
     this.dataService.getData();
 
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit{
       } else {
         this.authService.currUser.set(null);
       }
-      console.log(this.authService.currUser());
     })
   }
   title = 'game-forum';

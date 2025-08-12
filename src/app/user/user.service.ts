@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";console.log
+import { Injectable } from "@angular/core";
 import { userForAuth } from "../types/user";
 import { NgForm } from "@angular/forms";
 
@@ -63,8 +63,6 @@ export class UserService {
 
   editUser(newUserData: NgForm){
     const oldData: userForAuth = JSON.parse(localStorage.getItem(this.USER_KEY) || '');
-    console.log(oldData);
-    console.log(newUserData.value);
     
     const {userName, name, email, mobile, password} = newUserData.value;
 
@@ -77,7 +75,6 @@ export class UserService {
       createdAt: oldData.createdAt,
       id: oldData.id
     }
-    console.log(newProfileData);
     
     localStorage.setItem(this.USER_KEY, JSON.stringify(newProfileData));
   }

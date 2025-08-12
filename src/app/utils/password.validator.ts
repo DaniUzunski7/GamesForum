@@ -4,10 +4,7 @@ export function passwordValidator(passwordControl: string, rePasswordControl: st
     return (control) => {
         
         const pass = control.get(passwordControl);
-        const rePass = control.get(rePasswordControl);
-
-        console.log(pass, rePass);
-        
+        const rePass = control.get(rePasswordControl);        
 
         if (pass !== rePass){
 

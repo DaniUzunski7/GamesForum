@@ -18,7 +18,6 @@ export class ThemesService {
   
   addNewTheme(form: NgForm) {
     const user = this.authService.currUser()!;
-    console.log(user);
     
     const {title, game, content} = form.value;
 

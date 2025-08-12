@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection } from 'firebase/firestore';
+import { collectionData, Firestore, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from '../types/game-type';
 
@@ -8,8 +7,8 @@ import { Game } from '../types/game-type';
   providedIn: 'root'
 })
 export class FirebaseDataService {
-  firestore = inject(Firestore);
-  themesCollection = collection(this.firestore, 'top-themes');
+  private firestore = inject(Firestore);
+  private themesCollection = collection(this.firestore, 'top-themes');
 
   constructor() { }
 

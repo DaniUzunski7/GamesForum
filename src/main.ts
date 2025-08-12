@@ -1,21 +1,21 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { appConfig } from './app/app.config';
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDpkxhbDHgg8K7H6vwj5VcWA6CsGdDYCT8",
-  authDomain: "gameforum-a7568.firebaseapp.com",
-  databaseURL: "https://gameforum-a7568-default-rtdb.firebaseio.com",
-  projectId: "gameforum-a7568",
-  storageBucket: "gameforum-a7568.firebasestorage.app",
-  messagingSenderId: "443762424219",
-  appId: "1:443762424219:web:09c0cd04030f3d0510893e"
-};
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+import { firebaseConfig } from './enviroments/enviroment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
 
-  bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+import { routes } from './app/app.routes';
+
+  bootstrapApplication(AppComponent, {
+    providers: [
+      provideFirebaseApp(() => initializeApp(firebaseConfig)),
+      provideFirestore(() => getFirestore()),
+      provideAuth(() => getAuth()),
+      provideRouter(routes, withEnabledBlockingInitialNavigation()),
+    ]
+  })
+  // .catch((err) => console.error(err));
