@@ -4,10 +4,9 @@ import { Router, RouterLink } from "@angular/router";
 import { EmailValidatorDirective } from "../../directives/email.directive";
 import { UserService } from "../user.service";
 import { DOMAINS } from "../../constants/domains";
-import { passwordValidator } from "../../utils/password.validator";
 import { AuthService } from "../auth.service";
 import { userForAuth } from "../../types/user";
-
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-register-page",
@@ -23,22 +22,31 @@ export class RegisterPageComponent {
   domains = DOMAINS;
   errorMessage: string | null = null;
 
-  constructor(private userService: UserService, private router: Router, private authService: AuthService) {}
+  constructor(private userService: UserService, private router: Router, private authService: AuthService, private toastr: ToastrService) {}
 
   register(formReg: NgForm) {
     const form: userForAuth = formReg.value;
+
+    if (form.password !== form.rePass) {
+      this.errorMessage = "Passwords do not match!";
+      this.toastr.error("Passwords do not match!", "Error");
+
+      return
+    }
     
     this.authService
     .register(form.userName, form.email, form.password)
     .subscribe({
       next: () => {
+        this.userService.register();
+        this.toastr.success("Checkpoint reached!", "Successful Registration");
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        this.errorMessage = err.code;
+        // this.errorMessage = err.code;
+        this.toastr.error(`Registration failed: ${err.message}`, 'Error');
       }
     });
 
-   passwordValidator
   }
 }
