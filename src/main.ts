@@ -3,10 +3,14 @@ import { AppComponent } from './app/app.component';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { importProvidersFrom } from '@angular/core';
 
 import { firebaseConfig } from './enviroments/enviroment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { routes } from './app/app.routes';
 
@@ -16,6 +20,13 @@ import { routes } from './app/app.routes';
       provideFirestore(() => getFirestore()),
       provideAuth(() => getAuth()),
       provideRouter(routes, withEnabledBlockingInitialNavigation()),
-    ]
-  })
-  // .catch((err) => console.error(err));
+     importProvidersFrom(
+      BrowserAnimationsModule,
+      ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+      })
+    ),
+  ]})
+  .catch((err) => console.error(err));
