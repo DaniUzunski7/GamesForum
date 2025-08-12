@@ -1,10 +1,10 @@
 import { Component, ViewChild, viewChild } from "@angular/core";
 import { FormsModule, NgForm, NgModel } from "@angular/forms";
 import { Router, RouterLink } from "@angular/router";
-import { UserService } from "../user.service";
 import { EmailValidatorDirective } from "../../directives/email.directive";
 import { DOMAINS } from "../../constants/domains";
 import { AuthService } from "../auth.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-login-page",
@@ -21,9 +21,9 @@ export class LoginPageComponent {
   @ViewChild("passInput") passInput!: string;
 
   constructor(
-    private userService: UserService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {}
 
   login(form: NgForm) {
@@ -33,10 +33,13 @@ export class LoginPageComponent {
       .login(formData.email, formData.password)
       .subscribe({
       next: () => {
+        this.toastr.success("Login successful!", `Welcome back!`);
         this.router.navigate(["/reviews"]);
       },
       error: (err) => {
         this.errorMess = err.code;
+        this.toastr.error(`Wrong email or password`, 'Login Failed');
+        form.controls['password'].reset();
       },
     });
   }

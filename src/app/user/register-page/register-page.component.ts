@@ -38,12 +38,10 @@ export class RegisterPageComponent {
     .register(form.userName, form.email, form.password)
     .subscribe({
       next: () => {
-        this.userService.register();
         this.toastr.success("Checkpoint reached!", "Successful Registration");
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        // this.errorMessage = err.code;
         this.toastr.error(`Registration failed: ${err.message}`, 'Error');
       }
     });
