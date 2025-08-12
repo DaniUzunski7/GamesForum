@@ -6,4 +6,5 @@ export interface userForAuth {
     password: string;
     id: string;
     createdAt: Date;
+    rePass?: string
 }

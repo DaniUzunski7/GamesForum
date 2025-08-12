@@ -9,13 +9,12 @@ import { FirebaseDataService } from './data/firebase.service';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../enviroments/enviroment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, HeaderComponent, FormsModule, BrowserAnimationsModule, ],
+  imports: [RouterOutlet, FooterComponent, HeaderComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [
