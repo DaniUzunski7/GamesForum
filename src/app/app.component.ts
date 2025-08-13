@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.dataService.getData();
+    this.dataService.getGameData();
 
     this.authService.user$.subscribe(user => {
       if (user){
