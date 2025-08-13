@@ -9,7 +9,7 @@ import { FirebaseDataService } from '../../data/firebase.service';
 @Component({
   selector: 'app-reviews-page',
   standalone: true,
-  imports: [RouterLink, NgFor, AsyncPipe, NgIf],
+  imports: [RouterLink, NgFor, AsyncPipe, NgIf, DatePipe],
   templateUrl: './reviews-page.component.html',
   styleUrl: './reviews-page.component.css',
   providers: [DatePipe]

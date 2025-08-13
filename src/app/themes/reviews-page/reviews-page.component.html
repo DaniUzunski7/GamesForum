@@ -10,7 +10,7 @@
         <div *ngFor="let theme of $themes | async; let i = index" class="theme-card">
   <div class="theme-header">
     <h2 class="theme-title" [routerLink]="'/reviews/' + theme.id">{{ theme.title }}</h2>
-    <span class="theme-date">{{ dateConverter(theme.createdAt)!}}</span>
+    <span class="theme-date">{{ dateConverter(theme.createdAt)! | date: 'fullDate'}}</span>
   </div>
 
   <p class="theme-game"><strong>Game:</strong> {{ theme.gameTitle }}</p>
