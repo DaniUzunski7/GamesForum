@@ -29,7 +29,6 @@ export class ThemesService {
           likes: 0,
           liked: false,
           comments: [] as userComment[],
-          id: (this.currId++).toString(),
           owner: user.userName
         }
     

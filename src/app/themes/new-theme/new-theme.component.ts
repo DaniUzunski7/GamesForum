@@ -1,7 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ThemesService } from '../themes.service';
+import { FirebaseDataService } from '../../data/firebase.service';
 
 @Component({
   selector: 'app-new-theme',
@@ -12,19 +13,16 @@ import { ThemesService } from '../themes.service';
 })
 export class NewThemeComponent {
 
-  constructor(private themeService: ThemesService) {}
+  constructor(private themeService: ThemesService, private router: Router, private firebaseService: FirebaseDataService) {}
 
   newTheme(form: NgForm) {
 
     if (form.invalid){
       console.log('form invalid');
       return;
-    } else {
-      console.log('valid');
-      console.log(form.value);
-    }
+    } 
 
-    this.themeService.addNewTheme(form)
-    form.reset();
+      this.firebaseService.createTheme(form.value)
+      this.router.navigate(['/reviews']);
   }
 }
