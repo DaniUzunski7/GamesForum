@@ -7,8 +7,39 @@
       <h1 class="page-title">All Discussions</h1>
   
       <div class="themes-list">
+        <div *ngFor="let theme of $themes | async; let i = index" class="theme-card">
+  <div class="theme-header">
+    <h2 class="theme-title" [routerLink]="'/reviews/' + theme.id">{{ theme.title }}</h2>
+    <span class="theme-date">{{ dateConverter(theme.createdAt)!}}</span>
+  </div>
+
+  <p class="theme-game"><strong>Game:</strong> {{ theme.gameTitle }}</p>
+  <p class="theme-content">{{ theme.content }}</p>
+  <p class="theme-owner">Owner: {{ theme.owner }}</p>
+
+  <div class="theme-footer">
+    <p class="theme-likes">
+      <i class="fa-solid fa-heart" 
+         [class.liked]="theme.liked" 
+         (click)="like(theme.title)">
+      </i> {{ theme.likes || 0 }} Likes
+    </p>
+
+    <p class="theme-comments" *ngIf="theme.comments?.length === 1">
+      <i class="fa-regular fa-comment"></i> {{ theme.comments.length }} Comment
+    </p>
+    <p class="theme-comments" *ngIf="theme.comments?.length !== 1">
+      <i class="fa-regular fa-comments"></i> {{ theme.comments?.length || 0 }} Comments
+    </p>
+  </div>
+</div>
+
+<div *ngIf="($themes | async)?.length === 0">
+  <p>No themes yet.</p>
+</div>
+
         <!-- Each theme card -->
-         @for (theme of currThemes; track $index) {
+         <!-- @for (theme of currThemes; track theme.id) {
 
              <div class="theme-card">
                  <div class="theme-header">
@@ -31,7 +62,7 @@
                         }
                     </div>
                 </div>
-            }
+            } -->
       </div>
     </div>
   </div>

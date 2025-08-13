@@ -14,10 +14,15 @@ export class FirebaseDataService {
 
   constructor(private auth: AuthService) { }
 
-  getData(): Observable<Game[]> {
+  getGameData(): Observable<Game[]> {
     return collectionData(this.themesCollection, {
       idField: 'id',
     }) as Observable<Game[]>
+  }
+
+  getThemesData(): Observable<Theme[]> {
+    const themesRef = collection(this.firestore, 'themes');
+    return collectionData(themesRef) as Observable<Theme[]>;
   }
 
   async createTheme(theme: Theme) {

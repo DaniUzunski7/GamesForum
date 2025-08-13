@@ -8,5 +8,6 @@ export interface Theme {
     likes: number,
     liked: boolean,
     comments: userComment[],
+    id: string,
     owner: string
 }
