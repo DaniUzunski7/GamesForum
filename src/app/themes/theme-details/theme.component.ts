@@ -34,9 +34,7 @@ export class ThemeComponent implements OnInit{
 
     this.firebaseService.getThemeById(themeId!).subscribe((theme: Theme) => {
       this.currTheme = theme;
-      this.currComments = this.currTheme!.comments;
-      console.log(this.currComments);
-      
+      this.currComments = this.currTheme!.comments;      
     });
       
   }
@@ -46,9 +44,10 @@ export class ThemeComponent implements OnInit{
     form.reset()
   }
 
-  dateConverter(date: Date){
-    return this.datePipe.transform(date, 'mediumDate', 'Europe/Sofia', 'en-US') 
-  }
+  dateConverter(timestamp: any): Date | null {
+  if (!timestamp) return null;
+  return timestamp.toDate();
+}
 
   like(title: string, comment: string){
     return likingFn.commentLike(themes, title, comment)

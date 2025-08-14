@@ -15,26 +15,24 @@
             <p class="theme-likes"><i class="fa-solid fa-heart"></i> {{ (currTheme)?.likes }} Likes</p>
             <h2 class="comments-title">Comments</h2>
             <ul class="comments-list">
-                @for (comment of currComments; track $index) {
-                <div class="comment">
-                    <div class="comment-style bigger">
-                        <p><strong>{{ comment.author }}:</strong></p>
-                        <p>{{ comment.content }}</p>
-                    </div>
-                    @for (comment of currComments; track $index) {
-  <div class="comment-style">
-    <p>{{ dateConverter(comment.createdAt) | date: 'fullDate' }}</p>
-    <span class="comment-likes">
-      <i class="fa-solid fa-heart comment-likes" 
-         (click)="like(currTheme!.title, comment.content)"
-         [class.liked]="comment.isLiked">
-      </i> {{ comment.likes }} Likes
-    </span>
-  </div>
-}
-                </div>
-                }
-            </ul>
+  @for (comment of currComments; track $index) {
+    <div class="comment">
+      <div class="comment-style bigger">
+        <p><strong>{{ comment.author }}:</strong></p>
+        <p>{{ comment.content }}</p>
+      </div>
+      <div class="comment-style">
+        <p>{{ dateConverter(comment.createdAt) | date: 'medium'}}</p>
+        <span class="comment-likes">
+          <i class="fa-solid fa-heart comment-likes" 
+             (click)="like(currTheme!.title, comment.content)"
+             [class.liked]="comment.isLiked">
+          </i> {{ comment.likes }} Likes
+        </span>
+      </div>
+    </div>
+  }
+</ul>
         </div>
 
         @if(authService.currUser()){
