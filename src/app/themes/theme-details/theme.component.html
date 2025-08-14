@@ -5,56 +5,54 @@
     <!-- Overlay Content -->
     <div class="overlay">
         <div class="theme-header">
-            <h1 class="theme-title">{{ currTheme!.title }}</h1>
-            <p class="theme-game"><strong>Game:</strong> {{ currTheme!.gameTitle }}</p>
+            <h1 class="theme-title">{{ (currTheme)?.title }}</h1>
+            <p class="theme-game"><strong>Game:</strong> {{ (currTheme)?.gameTitle }}</p>
         </div>
 
         <div class="theme-body">
-            <p class="theme-content">{{ currTheme!.content }}</p>
-            
-            <p class="theme-likes"><i class="fa-solid fa-heart"></i> {{ currTheme!.likes }} Likes</p>
+            <p class="theme-content">{{ (currTheme)?.content }}</p>
+
+            <p class="theme-likes"><i class="fa-solid fa-heart"></i> {{ (currTheme)?.likes }} Likes</p>
             <h2 class="comments-title">Comments</h2>
             <ul class="comments-list">
                 @for (comment of currComments; track $index) {
-                    <div class="comment">
-                        <div class="comment-style bigger">
-                            <p><strong>{{ comment.author }}:</strong></p>
-                            <p>{{ comment.content }}</p>
-                        </div>
-                        <div class="comment-style">
-                            <p>{{dateConverter(comment.createdAt)}}</p>
-                            <span class="comment-likes"><i class="fa-solid fa-heart comment-likes" 
-                                (click)="like(currTheme!.title, comment.content)"
-                                [class.liked]="comment.isLiked"></i> {{ comment.likes }} Likes</span>
-                        </div>
+                <div class="comment">
+                    <div class="comment-style bigger">
+                        <p><strong>{{ comment.author }}:</strong></p>
+                        <p>{{ comment.content }}</p>
                     </div>
+                    @for (comment of currComments; track $index) {
+  <div class="comment-style">
+    <p>{{ dateConverter(comment.createdAt) | date: 'fullDate' }}</p>
+    <span class="comment-likes">
+      <i class="fa-solid fa-heart comment-likes" 
+         (click)="like(currTheme!.title, comment.content)"
+         [class.liked]="comment.isLiked">
+      </i> {{ comment.likes }} Likes
+    </span>
+  </div>
+}
+                </div>
                 }
             </ul>
         </div>
 
         @if(authService.currUser()){
-            <div class="comment-form">
-                <form #form="ngForm" (ngSubmit)="postComment(form)">
-                    <input 
-                    id="comment"
-                    name="comment"
-                    ngModel
-                    #comment="ngModel"
-                    placeholder="Write your comment..." 
-                    class="comment-input" 
-                    minlength="3"
-                    maxlength="120" 
-                    [class.required]=" comment.touched && comment.invalid" 
+        <div class="comment-form">
+            <form #form="ngForm" (ngSubmit)="postComment(form)">
+                <input id="comment" name="comment" ngModel #comment="ngModel" placeholder="Write your comment..."
+                    class="comment-input" minlength="3" maxlength="120"
+                    [class.required]=" comment.touched && comment.invalid"
                     [attr.placeholder]="comment.invalid && comment.touched ? 'Comment should be at least 3 characters long' : 'Write your comment...'"
                     required>
-                    <button class="comment-submit-button" [disabled]="form.invalid">Post Comment</button>
-                </form>
-            </div>
+                <button class="comment-submit-button" [disabled]="form.invalid">Post Comment</button>
+            </form>
+        </div>
         } @else {
-            <div class="login">
-                <p>In order to write a comment press:</p>
-                <p class="blue-underline" routerLink="/login">Login</p>
-            </div>
+        <div class="login">
+            <p>In order to write a comment press:</p>
+            <p class="blue-underline" routerLink="/login">Login</p>
+        </div>
         }
     </div>
 </div>
