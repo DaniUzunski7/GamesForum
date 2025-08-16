@@ -26,7 +26,7 @@ export class UserService {
     this.user = {
       userName: 'DaniU7',
       name: "Daniel Uzunski",
-      mobile: "0897885889",
+      phone: "0897885889",
       email: "dani.uzunski@icloud.com",
       password: "123123",
       id: "123",
@@ -34,20 +34,6 @@ export class UserService {
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
-  }
-
-  register() {
-    this.user = {
-      userName: 'DaniU7',
-      name: "Daniel Uzunski",
-      mobile: "0897885889",
-      email: "123",
-      password: "123",
-      id: "123",
-      createdAt: new Date(),
-    };
-
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   logout() {
@@ -70,7 +56,7 @@ export class UserService {
       userName: userName,
       name: name,
       email: email,
-      mobile: mobile,
+      phone: mobile,
       password: password,
       createdAt: oldData.createdAt,
       id: oldData.id

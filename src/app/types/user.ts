@@ -1,7 +1,7 @@
 export interface userForAuth {
     userName: string;
     name: string;
-    mobile: string;
+    phone: string;
     email: string;
     password: string;
     id: string;
