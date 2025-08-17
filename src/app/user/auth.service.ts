@@ -31,7 +31,7 @@ export class AuthService {
   currUser = signal<userInterface | null | undefined>(undefined);
 
   get isLogged(): boolean {
-    return !!this.user$;
+    return JSON.parse(localStorage.getItem(this.USER_KEY)!)
   } 
 
   getUser() {
