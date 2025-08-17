@@ -11,7 +11,7 @@ import {
 import { from, Observable } from 'rxjs';
 import { userForAuth } from '../types/user';
 import { userInterface } from '../types/userInterface';
-import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { collection, doc, docData, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -33,55 +33,65 @@ export class AuthService {
   }
 
   register(user: userForAuth): Observable<void> {
+    const usersCollection = collection(this.firestore, 'users');
     
-    const data = createUserWithEmailAndPassword(
-      this.auth,
-      user.email,
-      user.password
-    )
-      .then((response) =>
-        updateProfile(response.user, { displayName: user.userName })
-      )
-      .then(() => {
-        console.log(this.auth.currentUser);
-        
-        const userRef = doc(this.usersCollection, this.auth.currentUser!.uid);
-        setDoc(userRef, {
-          userName: user.userName,
-          name: user.name,
-          id: this.auth.currentUser!.uid,
-          email: this.auth.currentUser!.email,
-          //! Hash pasword
-          password: user.password,
-          phone: user.phone,
-          createdAt: new Date(),
-        });
-      });
-
-        const userData = {
-        id: this.auth.currentUser!.uid,
+    const newUser = createUserWithEmailAndPassword(this.auth, user.email, user.password)
+    .then((userCredential) => {
+      const userFireBase = userCredential.user;
+      
+      setDoc(doc(usersCollection, userFireBase.uid), {
+        uid: userFireBase.uid,
         email: user.email,
-        userName: user.userName,
+        username: user.username,
         name: user.name,
-        phone: user.phone
-    };
+        phone: user.phone,
+        createdAt: new Date().toISOString(),
+      }).then(() => {
+        localStorage.setItem(this.USER_KEY, JSON.stringify({
+            uid: userFireBase.uid,
+            email: user.email,
+            username: user.username,
+          })
+        );
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(userData));
+        return user;
+      });
+    });
 
-    return from(data);
+    return from(newUser);
   }
 
   login(email: string, password: string) {
-    const promise = signInWithEmailAndPassword(this.auth, email, password).then(
-      () => {}
-    );
+    const promise = signInWithEmailAndPassword(this.auth, email, password).then(userCredential => {
+    const uid = userCredential.user.uid
+    const user = doc(this.usersCollection, uid);
 
+    const userData = getDoc(user).then((userData) => {
+      const userInfo = userData.data() as userForAuth;
+      console.log(userInfo);
+      
+       localStorage.setItem(this.USER_KEY, JSON.stringify({
+            uid: uid,
+            email: userInfo.email,
+            username: userInfo.username,
+          })
+        );
+
+    });
+    
+   
+    
+  });
     return from(promise);
   }
 
   logout(): Observable<void> {
     const promise = signOut(this.auth);
+
     localStorage.removeItem('user');
+    
     return from(promise);
   }
 }
+
+

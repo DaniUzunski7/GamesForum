@@ -29,13 +29,13 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     
-    this.dataService.getGameData();
+    this.dataService.getThemesData();
 
     this.authService.user$.subscribe(user => {
       if (user){
         this.authService.currUser.set({
           email: user.email!,
-          userName: user.displayName!,
+          username: user.displayName!,
         })
       } else {
         this.authService.currUser.set(null);

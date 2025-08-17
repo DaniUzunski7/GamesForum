@@ -24,7 +24,7 @@ export class UserService {
 
   login() {
     this.user = {
-      userName: 'DaniU7',
+      username: 'DaniU7',
       name: "Daniel Uzunski",
       phone: "0897885889",
       email: "dani.uzunski@icloud.com",
@@ -50,10 +50,10 @@ export class UserService {
   editUser(newUserData: NgForm){
     const oldData: userForAuth = JSON.parse(localStorage.getItem(this.USER_KEY) || '');
     
-    const {userName, name, email, mobile, password} = newUserData.value;
+    const {username, name, email, mobile, password} = newUserData.value;
 
     const newProfileData: userForAuth = {
-      userName: userName,
+      username: username,
       name: name,
       email: email,
       phone: mobile,

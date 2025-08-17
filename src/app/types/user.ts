@@ -1,5 +1,5 @@
 export interface userForAuth {
-    userName: string;
+    username: string;
     name: string;
     phone: string;
     email: string;

@@ -15,11 +15,11 @@ export class HeaderComponent {
   menuOpen: boolean = false;
 
   get isLogged() {
-      return this.authService.currUser();
+      return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null;
   }
 
   get firstName(): string {
-    return this.userService.user?.userName || '';
+    return this.userService.user?.username || '';
   }
   
   constructor(private userService: UserService, private router: Router, private authService: AuthService) {}

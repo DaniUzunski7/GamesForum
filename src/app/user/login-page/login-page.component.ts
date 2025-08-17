@@ -28,7 +28,7 @@ export class LoginPageComponent {
 
   login(form: NgForm) {
     const formData = form.value;
-
+    
     this.authService
       .login(formData.email, formData.password)
       .subscribe({
