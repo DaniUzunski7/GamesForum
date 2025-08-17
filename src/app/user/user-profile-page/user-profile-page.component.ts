@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { userForAuth } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
+import { Firestore, getDoc } from '@angular/fire/firestore';
+import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-user-profile-page',
@@ -13,20 +18,13 @@ import { UserService } from '../user.service';
   providers: [DatePipe]
 })
 export class UserProfilePageComponent {
+  fireStore = inject(Firestore);
+  private firebaseAuth = inject(Auth)
 
-  constructor(private datePipe: DatePipe, private userService: UserService) {}
+  constructor(private datePipe: DatePipe, private userService: UserService, private auth: AuthService, private toastr: ToastrService) {}
+  user: userForAuth = JSON.parse(localStorage.getItem('user')!)
 
-  user: userForAuth = JSON.parse(localStorage.getItem('[user]')!);
-  
   isToggled: boolean = false;
-  isShown: boolean = false;
-  pass: string = '******'
-
-  showPassword(){
-   this.isShown = !this.isShown;
-    
-   this.pass = this.isShown ? `${this.user.password}` : '******'; 
-  }
 
   dateConverter(date: Date){
     return this.datePipe.transform(date, 'medium', 'Europe/Sofia', 'en-US') 
@@ -44,4 +42,16 @@ export class UserProfilePageComponent {
     this.userService.editUser(form);
     this.isToggled = !this.isToggled;
   }
+
+  resetPassword(){
+    sendPasswordResetEmail(this.firebaseAuth,  this.user.email)
+      .then(() => {
+        this.toastr.success('Password reset', 'We have sent you an email to reset your password');
+      })
+      .catch((error) => {
+        console.error("Error sending reset email:", error.code, error.message);
+      });
+  }
 }
+
+

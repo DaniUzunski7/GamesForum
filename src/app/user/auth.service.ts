@@ -51,6 +51,9 @@ export class AuthService {
             uid: userFireBase.uid,
             email: user.email,
             username: user.username,
+            name: user.name,
+            phone: user.phone,
+            createdAt: new Date().toISOString(),  
           })
         );
 
@@ -74,6 +77,9 @@ export class AuthService {
             uid: uid,
             email: userInfo.email,
             username: userInfo.username,
+            name: userInfo.name,
+            phone: userInfo.phone,
+            createdAt: userInfo.createdAt,
           })
         );
 

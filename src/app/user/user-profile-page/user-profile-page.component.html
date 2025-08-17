@@ -17,18 +17,17 @@
         @if (!isToggled){
           <!-- Read Only -->
           <div class="user-info">
-            <p><strong>Username:</strong> {{ user.userName }}</p>
+            <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Full Name:</strong> {{ user.name }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
-            @if (user.mobile){
-              <p><strong>Phone number:</strong> {{ user.mobile }}</p>
+            @if (user.phone){
+              <p><strong>Phone number:</strong> {{ user.phone }}</p>
             }
-            <div class="hidePass">
-              <i (click)="showPassword()" class="fa-regular fa-eye"></i>
-              <p><strong>Password:</strong> {{ this.pass }}</p>
-            </div>
             <p><strong>Member Since:</strong> {{ dateConverter(user.createdAt) }} </p>
-            <button class="edit-btn" (click)="togle()">Edit</button>
+           <div class="button-group">
+              <button class="action-button" (click)="togle()">Edit</button>
+              <button class="action-button" (click)="resetPassword()">Reset Password</button>
+            </div>
           </div>
         } @else {          
           <!-- Edit Mode -->
@@ -38,8 +37,8 @@
             <form class="edit-form" #editForm="ngForm" (ngSubmit)="editProfile(editForm)">
               
               <div class="form-group">
-                <label for="userName">Username</label>
-                <input type="text" id="userName" [(ngModel)]="user.userName" name="userName" ngModel #userName="ngModel" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" [(ngModel)]="user.username" name="username" ngModel #username="ngModel" required>
               </div>
               
               <div class="form-group">
@@ -54,26 +53,7 @@
             
             <div class="form-group">
               <label for="mobile">Phone Number</label>
-              <input type="text" id="mobile" [(ngModel)]="user.mobile" name="mobile"  ngModel #mobile="ngModel">
-            </div>
-            
-            <div class="form-group">
-              <label for="password">Password</label>
-              <div class="password-field">
-                <input 
-                  type="text" 
-                  id="password" 
-                  [(ngModel)]="user.password"  
-                  name="password" minlength="6"  
-                  ngModel 
-                  #password="ngModel" 
-                  [class.required]=" password.touched && password.invalid" 
-                  [attr.placeholder]="password.invalid && password.touched ? 'Password is required' : 'Enter your password'"
-                  required>
-                @if (password.invalid && password.touched) {
-                  <p class="required-mess">Password should be at least 6 characters long</p>
-                }
-              </div>
+              <input type="text" id="mobile" [(ngModel)]="user.phone" name="mobile"  ngModel #mobile="ngModel">
             </div>
             
             <div class="form-actions">
