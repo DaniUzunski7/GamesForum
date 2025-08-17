@@ -21,7 +21,7 @@ export class ThemesService {
     const addComment: userComment = {
       content: comment,
       likes: 0,
-      author: user.userName,
+      author: user.username,
       isLiked: false,
       createdAt: new Date()
     }
