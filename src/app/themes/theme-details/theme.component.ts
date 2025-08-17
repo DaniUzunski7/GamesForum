@@ -1,15 +1,13 @@
 import { Component, inject, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Theme } from '../../types/theme';
-import { themes } from '../../data/themes';
-import { AsyncPipe, DatePipe, NgClass, NgIf } from '@angular/common';
-import { userComment } from '../../types/comment';
-import { likingFn } from '../../utils/liking';
+import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { UserComment } from '../../types/comment';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ThemesService } from '../themes.service';
 import { AuthService } from '../../user/auth.service';
 import { FirebaseDataService } from '../../data/firebase.service';
-import { Observable, Subscription } from 'rxjs';
+import { LikesService } from '../../utils/liking.service';
 
 @Component({
   selector: 'app-theme',
@@ -22,12 +20,10 @@ import { Observable, Subscription } from 'rxjs';
 export class ThemeComponent implements OnInit{
   authService = inject(AuthService);
 
-  currComments: userComment[] | undefined;
+  currComments: UserComment[] | undefined;
   currTheme!: Theme | undefined;
   
-  constructor(private route: ActivatedRoute, private datePipe: DatePipe, private themeService: ThemesService, private firebaseService: FirebaseDataService) {
-    
-  }
+  constructor(private route: ActivatedRoute, private themeService: ThemesService, private firebaseService: FirebaseDataService, private likesService: LikesService) {}
   
   ngOnInit(): void {
     const themeId = this.route.snapshot.paramMap.get('id');
@@ -40,7 +36,7 @@ export class ThemeComponent implements OnInit{
   }
 
   postComment(form: NgForm){
-    // this.themeService.addNewComment(form, this.currTheme!);
+    this.themeService.addNewComment(form, this.currTheme!);
     form.reset()
   }
 
@@ -49,7 +45,7 @@ export class ThemeComponent implements OnInit{
   return timestamp.toDate();
 }
 
-  like(title: string, comment: string){
-    return likingFn.commentLike(themes, title, comment)
+  like(themeId: string, comment: string, username: string){
+    return this.likesService.commentLike(themeId, comment, username)
   }
 }

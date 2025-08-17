@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Theme } from '../../types/theme';
-import { CommonModule, DatePipe, NgFor, AsyncPipe, NgIf } from '@angular/common';
-import { likingFn } from '../../utils/liking';
+import { DatePipe, NgFor, AsyncPipe, NgIf } from '@angular/common';
 import { FirebaseDataService } from '../../data/firebase.service';
+import { LikesService } from '../../utils/liking.service';
 
 
 @Component({
@@ -19,12 +19,12 @@ export class ReviewsPageComponent {
   currThemes: Theme[] = [];
   $themes;
   
-  constructor(private date: DatePipe, private firebaseService: FirebaseDataService) {
+  constructor( private firebaseService: FirebaseDataService, private likesService: LikesService) {
     this.$themes = this.firebaseService.getThemesData();    
   }
   
   like(title: string){
-    return likingFn.themeLike(this.currThemes, title)
+    return this.likesService.themeLike(this.currThemes, title)
   }
 
   

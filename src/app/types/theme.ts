@@ -1,4 +1,4 @@
-import { userComment } from "./comment";
+import { UserComment } from "./comment";
 
 export interface Theme {
     title: string,
@@ -7,7 +7,7 @@ export interface Theme {
     createdAt: Date,
     likes: number,
     liked: boolean,
-    comments: userComment[],
+    comments: UserComment[],
     id: string,
     owner: string
 }

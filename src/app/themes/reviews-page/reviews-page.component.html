@@ -25,12 +25,15 @@
       </i> {{ theme.likes || 0 }} Likes
     </p>
 
-    <p class="theme-comments" *ngIf="theme.comments?.length === 1">
+    @if (theme.comments!.length === 1) {
+    <p class="theme-comments">
       <i class="fa-regular fa-comment"></i> {{ theme.comments.length }} Comment
     </p>
-    <p class="theme-comments" *ngIf="theme.comments?.length !== 1">
-      <i class="fa-regular fa-comments"></i> {{ theme.comments?.length || 0 }} Comments
+    } @else {
+    <p class="theme-comments">
+      <i class="fa-regular fa-comments"></i> {{ theme.comments!.length || 0 }} Comments
     </p>
+  }
   </div>
 </div>
 
@@ -39,7 +42,7 @@
 </div>
 
         <!-- Each theme card -->
-         <!-- @for (theme of currThemes; track theme.id) {
+         @for (theme of currThemes; track theme.id) {
 
              <div class="theme-card">
                  <div class="theme-header">
@@ -62,7 +65,7 @@
                         }
                     </div>
                 </div>
-            } -->
+            }
       </div>
     </div>
   </div>

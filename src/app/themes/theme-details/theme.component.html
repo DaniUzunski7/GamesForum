@@ -25,9 +25,9 @@
         <p>{{ dateConverter(comment.createdAt) | date: 'medium'}}</p>
         <span class="comment-likes">
           <i class="fa-solid fa-heart comment-likes" 
-             (click)="like(currTheme!.title, comment.content)"
-             [class.liked]="comment.isLiked">
-          </i> {{ comment.likes }} Likes
+             (click)="like(currTheme!.id, comment.content, authService.currUser()!.username)"
+             [class.liked]="comment.likedBy.includes(authService.currUser()!.username)">
+          </i> {{ comment.likedBy.length }} Likes
         </span>
       </div>
     </div>

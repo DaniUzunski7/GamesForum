@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { userComment } from '../types/comment';
+import { UserComment } from '../types/comment';
 import { Theme } from '../types/theme';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../user/auth.service';
@@ -24,7 +24,7 @@ export class ThemesService {
       likes: 0,
       createdAt: new Date(),
       likedBy: [],
-    } as userComment;
+    } as UserComment;
 
     try {
        updateDoc(themeRef, {

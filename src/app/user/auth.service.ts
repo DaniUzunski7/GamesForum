@@ -77,7 +77,6 @@ export class AuthService {
 
     const userData = getDoc(user).then((userData) => {
       const userInfo = userData.data() as UserForAuth;
-      console.log(userInfo);
       
        localStorage.setItem(this.USER_KEY, JSON.stringify({
             id: uid,
