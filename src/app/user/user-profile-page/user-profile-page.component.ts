@@ -43,10 +43,17 @@ export class UserProfilePageComponent {
     this.isToggled = !this.isToggled;
   }
 
-  resetPassword(){
+  resetPassword(){ 
     sendPasswordResetEmail(this.firebaseAuth,  this.user.email)
+
       .then(() => {
-        this.toastr.success('Password reset', 'We have sent you an email to reset your password');
+        if (confirm("Do you want to reset your password?")){
+          this.toastr.success('Password reset email sent', 'Please check your inbox');
+        } else {
+          this.toastr.show('Password reset cancelled');
+          return;
+        }
+        
       })
       .catch((error) => {
         console.error("Error sending reset email:", error.code, error.message);
