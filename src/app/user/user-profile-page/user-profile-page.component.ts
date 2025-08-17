@@ -1,8 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { userForAuth } from '../../types/user';
+import { UserForAuth } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 import { Firestore, getDoc } from '@angular/fire/firestore';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
@@ -21,8 +20,8 @@ export class UserProfilePageComponent {
   fireStore = inject(Firestore);
   private firebaseAuth = inject(Auth)
 
-  constructor(private datePipe: DatePipe, private userService: UserService, private auth: AuthService, private toastr: ToastrService) {}
-  user: userForAuth = JSON.parse(localStorage.getItem('user')!)
+  constructor(private datePipe: DatePipe, private authService: AuthService, private auth: AuthService, private toastr: ToastrService) {}
+  user: UserForAuth = JSON.parse(localStorage.getItem('user')!)
 
   isToggled: boolean = false;
 
@@ -39,7 +38,7 @@ export class UserProfilePageComponent {
   }
 
   editProfile(form: NgForm){
-    this.userService.editUser(form);
+    this.authService.editUser(form);
     this.isToggled = !this.isToggled;
   }
 

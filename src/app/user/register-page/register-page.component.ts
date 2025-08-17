@@ -4,7 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { EmailValidatorDirective } from '../../directives/email.directive';
 import { DOMAINS } from '../../constants/domains';
 import { AuthService } from '../auth.service';
-import { userForAuth } from '../../types/user';
+import { UserForAuth } from '../../types/user';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -28,7 +28,7 @@ export class RegisterPageComponent {
   ) {}
 
   register(formReg: NgForm) {
-    const form: userForAuth = formReg.value;
+    const form: UserForAuth = formReg.value;
 
     if (form.password !== form.rePass) {
       this.errorMessage = 'Passwords do not match!';

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { userComment } from '../types/comment';
 import { Theme } from '../types/theme';
 import { NgForm } from '@angular/forms';
-import { themes } from '../data/themes';
-import { userInterface } from '../types/userInterface';
 import { AuthService } from '../user/auth.service';
 
 @Injectable({
@@ -15,7 +13,7 @@ export class ThemesService {
   constructor(private authService: AuthService) { }
 
   addNewComment(form: NgForm, theme: Theme){
-    const user: userInterface = this.authService.currUser()!;
+    const user = this.authService.currUser()!;
     const {comment} = form.value;
 
     const addComment: userComment = {

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../user/user.service';
 import { AuthService } from '../../user/auth.service';
-import { userInterface } from '../../types/userInterface';
 
 @Component({
   selector: 'app-header',
@@ -17,12 +15,8 @@ export class HeaderComponent {
   get isLogged() {
       return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null;
   }
-
-  get firstName(): string {
-    return this.userService.user?.username || '';
-  }
   
-  constructor(private userService: UserService, private router: Router, private authService: AuthService) {}
+  constructor( private router: Router, private authService: AuthService) {}
 
 
   logout() {

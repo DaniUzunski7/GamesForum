@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { UserService } from "../user/user.service";
 import { RouterLink } from "@angular/router";
+import { AuthService } from "../user/auth.service";
 
 @Component({
   selector: "app-home-page",
@@ -12,9 +12,9 @@ import { RouterLink } from "@angular/router";
 export class HomePageComponent {
   backgroundImagePath = "assets/background-img.jpg";
 
-  constructor(private userService: UserService) {}
+  constructor(private authService: AuthService) {}
 
   get isLogged(): boolean {
-    return this.userService.isLogged;
+    return this.authService.isLogged;
   }
 }

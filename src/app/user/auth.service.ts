@@ -4,14 +4,16 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateEmail,
   updateProfile,
   user,
-  UserCredential,
 } from '@angular/fire/auth';
 import { from, Observable } from 'rxjs';
-import { userForAuth } from '../types/user';
+import { UserForAuth } from '../types/user';
 import { userInterface } from '../types/userInterface';
-import { collection, doc, docData, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { collection, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -23,24 +25,28 @@ export class AuthService {
   private firestore = inject(Firestore);
   private usersCollection = collection(this.firestore, 'users');
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private toastr: ToastrService) {}
 
   user$ = user(this.firebaseAuth);
   currUser = signal<userInterface | null | undefined>(undefined);
+
+  get isLogged(): boolean {
+    return !!this.user$;
+  } 
 
   getUser() {
     return this.auth.currentUser;
   }
 
-  register(user: userForAuth): Observable<void> {
+  register(user: UserForAuth): Observable<void> {
     const usersCollection = collection(this.firestore, 'users');
     
-    const newUser = createUserWithEmailAndPassword(this.auth, user.email, user.password)
+    const newUser = createUserWithEmailAndPassword(this.auth, user.email, user.password!)
     .then((userCredential) => {
       const userFireBase = userCredential.user;
       
       setDoc(doc(usersCollection, userFireBase.uid), {
-        uid: userFireBase.uid,
+        id: userFireBase.uid,
         email: user.email,
         username: user.username,
         name: user.name,
@@ -48,7 +54,7 @@ export class AuthService {
         createdAt: new Date().toISOString(),
       }).then(() => {
         localStorage.setItem(this.USER_KEY, JSON.stringify({
-            uid: userFireBase.uid,
+            id: userFireBase.uid,
             email: user.email,
             username: user.username,
             name: user.name,
@@ -70,11 +76,11 @@ export class AuthService {
     const user = doc(this.usersCollection, uid);
 
     const userData = getDoc(user).then((userData) => {
-      const userInfo = userData.data() as userForAuth;
+      const userInfo = userData.data() as UserForAuth;
       console.log(userInfo);
       
        localStorage.setItem(this.USER_KEY, JSON.stringify({
-            uid: uid,
+            id: uid,
             email: userInfo.email,
             username: userInfo.username,
             name: userInfo.name,
@@ -98,6 +104,50 @@ export class AuthService {
     
     return from(promise);
   }
+
+  editUser(newUserData: NgForm) {
+      const oldData: UserForAuth = JSON.parse(
+        localStorage.getItem(this.USER_KEY)!
+      );
+  
+      if (!oldData) {
+        throw new Error('No logged-in user found');
+      }
+  
+      const userDocRef = doc(this.firestore, `users/${oldData.id}`);
+  
+      try {
+        updateDoc(userDocRef, {
+          ...newUserData.value,
+          id: oldData.id,
+          createdAt: oldData.createdAt,
+          updatedAt: new Date(),
+        });
+        this.toastr.success('Profile updated successfully', 'Success');
+      } catch (error) {
+        this.toastr.error('Failed to update profile', `${error}`);
+      }
+  
+      //! Should update email and username in Firebase Auth as well
+      // if (newUserData.value.username !== oldData.username || newUserData.value.email !== oldData.email) {
+      //   try {
+      //     updateEmail(this.auth.currentUser!, newUserData.value.email);
+      //     updateProfile(this.auth.currentUser!, {
+      //       displayName: newUserData.value.username,
+      //     });
+      //   } catch (error) {
+      //     this.toastr.error('Failed to update email or username', `${error}`);
+      //   }
+      // }
+  
+      localStorage.setItem( this.USER_KEY, JSON.stringify({
+          ...newUserData.value,
+          id: oldData.id,
+          createdAt: oldData.createdAt,
+          updatedAt: new Date(),
+        })
+      );
+    }
 }
 
 

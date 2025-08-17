@@ -20,9 +20,7 @@
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Full Name:</strong> {{ user.name }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
-            @if (user.phone){
-              <p><strong>Phone number:</strong> {{ user.phone }}</p>
-            }
+            <p><strong>Phone number:</strong> {{ user.phone }}</p>
             <p><strong>Member Since:</strong> {{ dateConverter(user.createdAt) }} </p>
            <div class="button-group">
               <button class="edit-btn" (click)="togle()">Edit Information</button>
@@ -46,14 +44,14 @@
                 <input type="text" id="name" [(ngModel)]="user.name" name="name"  ngModel #name="ngModel" required>
             </div>
             
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="email">Email</label>
               <input type="email" id="email" [(ngModel)]="user.email" name="email"  ngModel #email="ngModel" required>
-            </div>
+            </div> -->
             
             <div class="form-group">
-              <label for="mobile">Phone Number</label>
-              <input type="text" id="mobile" [(ngModel)]="user.phone" name="mobile"  ngModel #mobile="ngModel">
+              <label for="phone">Phone Number</label>
+              <input type="text" id="phone" [(ngModel)]="user.phone" name="phone"  ngModel #phone="ngModel" required>
             </div>
             
             <div class="form-actions">
