@@ -160,6 +160,10 @@
     color: #00bcd4;
     cursor: pointer;
   }
+
+  .fa-heart.liked:hover {
+    color: #fff;
+  }
   
   .fa-heart.liked {
     color: #00bcd4;
