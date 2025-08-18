@@ -289,6 +289,36 @@
   background: #c0392b;
 }
 
+.no-themes-box {
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+.no-themes {
+    text-align: center;
+    color: #00bcd4;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    margin: 15px;
+  }
+
+  .create-theme-btn {
+    background-color: #00bcd4;
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+  }
+
   /* Responsive Design */
 @media (max-width: 768px) { 
   

@@ -68,10 +68,18 @@
 
       
     </div>
+
     <div class="user-themes">
-  <h2 class="themes-title">My Themes</h2>
+      <h2 class="themes-title">My Themes</h2>
+      
 
   <div class="themes-box">
+     @if ($themes.length === 0) {
+      <div class="no-themes-box">
+        <p class="no-themes">No themes created yet.</p>
+        <button class="create-theme-btn" [routerLink]="['/newtheme']">Create Theme</button>
+      </div>
+      }
     <ul class="theme-list">
       @for (theme of $themes; track $index) {
         
