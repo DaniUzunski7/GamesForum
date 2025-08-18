@@ -6,7 +6,7 @@ import { UserComment } from '../../types/comment';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ThemesService } from '../themes.service';
 import { AuthService } from '../../user/auth.service';
-import { FirebaseDataService } from '../../data/firebase.service';
+import { FirebaseDataService } from '../../utils/firebase.service';
 import { LikesService } from '../../utils/liking.service';
 
 @Component({
@@ -30,6 +30,7 @@ export class ThemeComponent implements OnInit{
 
     this.firebaseService.getThemeById(themeId!).subscribe((theme: Theme) => {
       this.currTheme = theme;
+      
       this.currComments = this.currTheme!.comments;      
     });
       

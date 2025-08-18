@@ -20,14 +20,14 @@
   <div class="theme-footer">
     <p class="theme-likes">
       <i class="fa-solid fa-heart" 
-         [class.liked]="theme.liked" 
+         [class.liked]="theme.likedBy" 
          (click)="like(theme.title)">
-      </i> {{ theme.likes || 0 }} Likes
+      </i> {{ theme.likedBy!.length }} Likes
     </p>
 
     @if (theme.comments!.length === 1) {
     <p class="theme-comments">
-      <i class="fa-regular fa-comment"></i> {{ theme.comments.length }} Comment
+      <i class="fa-regular fa-comment"></i> 1 Comment
     </p>
     } @else {
     <p class="theme-comments">
@@ -54,9 +54,9 @@
                     <p class="theme-owner">Owner: {{ theme.owner }}</p>
                     <div class="theme-footer">
                         <p class="theme-likes"><i class="fa-solid fa-heart" 
-                            [class.liked]="theme.liked" 
+                            [class.liked]="theme.likedBy" 
                             (click)="like(theme.title)">
-                            </i> {{ theme.likes }} Likes
+                            </i> {{ theme.likedBy.length}} Likes
                         </p>
                         @if (theme.comments.length === 1) {
                             <p class="theme-comments"><i class="fa-regular fa-comment"></i> {{ theme.comments.length }} Comment</p>

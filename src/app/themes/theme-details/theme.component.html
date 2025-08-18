@@ -12,7 +12,7 @@
         <div class="theme-body">
             <p class="theme-content">{{ (currTheme)?.content }}</p>
 
-            <p class="theme-likes"><i class="fa-solid fa-heart"></i> {{ (currTheme)?.likes }} Likes</p>
+            <p class="theme-likes"><i class="fa-solid fa-heart"></i> {{ (currTheme)?.likedBy!.length }} Likes</p>
             <h2 class="comments-title">Comments</h2>
             <ul class="comments-list">
   @for (comment of currComments; track $index) {

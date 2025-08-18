@@ -5,8 +5,7 @@ export interface Theme {
     gameTitle: string,
     content: string,
     createdAt: Date,
-    likes: number,
-    liked: boolean,
+    likedBy: string[],
     comments: UserComment[],
     id: string,
     owner: string
