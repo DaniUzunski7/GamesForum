@@ -62,7 +62,30 @@
         </div>
       }
 
+      
+
       </div>
+
+      
     </div>
+    <div class="user-themes">
+  <h2 class="themes-title">My Themes</h2>
+
+  <div class="themes-box">
+    <ul class="theme-list">
+      @for (theme of $themes; track $index) {
+        
+        <li class="theme-item" [routerLink]="'/reviews/' + theme.id">
+           
+          <div class="theme-info">
+            <p><strong>{{ theme.title }}</strong></p>
+            <p>Game: {{ theme.gameTitle }}</p>
+          </div>
+          <button class="delete-btn" (click)="deleteTheme(theme.id)">Delete</button>
+        </li>
+      }
+      </ul>
+  </div>
+</div>
   </div>
 </div>

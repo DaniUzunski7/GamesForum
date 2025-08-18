@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Theme } from '../../types/theme';
 import { DatePipe, NgFor, AsyncPipe, NgIf } from '@angular/common';
-import { FirebaseDataService } from '../../data/firebase.service';
+import { FirebaseDataService } from '../../utils/firebase.service';
 import { LikesService } from '../../utils/liking.service';
 
 

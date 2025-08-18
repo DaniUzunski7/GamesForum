@@ -6,21 +6,35 @@ import { AuthService } from '../auth.service';
 import { Firestore, getDoc } from '@angular/fire/firestore';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
+import { Theme } from '../../types/theme';
+import { FirebaseDataService } from '../../utils/firebase.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-user-profile-page',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './user-profile-page.component.html',
   styleUrl: './user-profile-page.component.css',
   providers: [DatePipe]
 })
 export class UserProfilePageComponent {
-  fireStore = inject(Firestore);
+  private fireStore = inject(Firestore);
   private firebaseAuth = inject(Auth)
 
-  constructor(private datePipe: DatePipe, private authService: AuthService, private auth: AuthService, private toastr: ToastrService) {}
+  $themes: Theme[] = [];
+
+  constructor(private datePipe: DatePipe, private authService: AuthService, private firebaseService: FirebaseDataService, private toastr: ToastrService) {}
+
+  ngOnInit(): void {
+  const currentUser = this.user.username;
+    
+  this.firebaseService.getThemesByUser(currentUser).then(themes => {
+    this.$themes = themes;
+  });
+}
+
   user: UserForAuth = JSON.parse(localStorage.getItem('user')!)
 
   isToggled: boolean = false;
@@ -57,6 +71,11 @@ export class UserProfilePageComponent {
       .catch((error) => {
         console.error("Error sending reset email:", error.code, error.message);
       });
+  }
+
+  deleteTheme(themeId: string){
+    console.log('working');
+    
   }
 }
 

@@ -216,6 +216,79 @@
   opacity: 0.75;
 }
 
+.user-themes {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.themes-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #00bcd4;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.themes-box {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  border: 2px solid #00bcd4;
+  display: flex;
+  flex-direction: column;
+  }
+
+.theme-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.theme-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-item:hover {
+  background: #333;
+}
+
+.theme-info {
+  color: #e0e0e0;
+}
+
+.theme-info strong {
+  color: #00bcd4;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.4s ease;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
   /* Responsive Design */
 @media (max-width: 768px) { 
   
@@ -276,4 +349,6 @@
     font-size: 0.85rem;
     padding: 0.5rem;
   }
+
+  
 }

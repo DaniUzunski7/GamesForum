@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ThemesService } from '../themes.service';
-import { FirebaseDataService } from '../../data/firebase.service';
+import { FirebaseDataService } from '../../utils/firebase.service';
 
 @Component({
   selector: 'app-new-theme',

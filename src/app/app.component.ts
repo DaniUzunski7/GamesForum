@@ -5,7 +5,7 @@ import { HeaderComponent } from './core/header/header.component';
 import {FormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AuthService } from './user/auth.service';
-import { FirebaseDataService } from './data/firebase.service';
+import { FirebaseDataService } from './utils/firebase.service';
 import { Firestore, getFirestore } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../enviroments/enviroment';
