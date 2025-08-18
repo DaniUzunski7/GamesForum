@@ -20,15 +20,15 @@ export const routes: Routes = [
 
     {path: 'top-games', component: TopGamesComponent},
 
-    {path: 'profile', component: UserProfilePageComponent},
+    {path: 'profile', component: UserProfilePageComponent, canActivate: [AuthGuard]},
 
     {path: 'newtheme', component: NewThemeComponent, canActivate: [AuthGuard]},
 
-    {path: 'reviews', component: ReviewsPageComponent},
+    {path: 'reviews', component: ReviewsPageComponent, canActivate: [AuthGuard]},
     
     {path: '404', component: Error404PageComponent},
 
-    {path: 'reviews/:id', component: ThemeComponent},
+    {path: 'reviews/:id', component: ThemeComponent, canActivate: [AuthGuard]},
 
     {path: '**', redirectTo: '/404', pathMatch: 'full'}
 ];
