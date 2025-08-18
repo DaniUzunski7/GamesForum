@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { collectionData, Firestore, collection, addDoc, docData, doc, updateDoc, where, query, getDocs } from '@angular/fire/firestore';
+import { collectionData, Firestore, collection, addDoc, docData, doc, updateDoc, where, query, getDocs, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from '../types/game-type';
 import { Theme } from '../types/theme';
@@ -67,5 +67,11 @@ export class FirebaseDataService {
       id: doc.id,
       ...doc.data()
     })) as Theme[];
+  }
+
+  deleteTheme(themeId: string) {
+    
+    return deleteDoc(doc(this.firestore, `themes/${themeId}`));
+  
   }
 }

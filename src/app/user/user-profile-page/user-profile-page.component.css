@@ -259,7 +259,6 @@
   border-radius: 12px;
   margin-bottom: 15px;
   transition: background 0.3s ease;
-  cursor: pointer;
 }
 
 .theme-item:hover {
@@ -268,6 +267,7 @@
 
 .theme-info {
   color: #e0e0e0;
+  cursor: pointer;
 }
 
 .theme-info strong {

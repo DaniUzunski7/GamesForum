@@ -74,8 +74,13 @@ export class UserProfilePageComponent {
   }
 
   deleteTheme(themeId: string){
-    console.log('working');
-    
+    this.firebaseService.deleteTheme(themeId).then(() => {
+      this.$themes = this.$themes.filter(theme => theme.id !== themeId);
+      this.toastr.success('Theme deleted successfully');
+    }).catch(error => {
+      console.error("Error deleting theme:", error);
+      this.toastr.error('Failed to delete theme');
+    });
   }
 }
 
