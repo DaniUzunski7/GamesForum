@@ -74,6 +74,11 @@ export class UserProfilePageComponent {
   }
 
   deleteTheme(themeId: string){
+    
+    if(!window.confirm("Are you sure you want to delete this theme? This action cannot be undone.")) {
+      return;
+    }
+
     this.firebaseService.deleteTheme(themeId).then(() => {
       this.$themes = this.$themes.filter(theme => theme.id !== themeId);
       this.toastr.success('Theme deleted successfully');
