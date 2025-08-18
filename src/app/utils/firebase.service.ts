@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { collectionData, Firestore, collection, addDoc, docData, doc, updateDoc } from '@angular/fire/firestore';
+import { collectionData, Firestore, collection, addDoc, docData, doc, updateDoc, where, query, getDocs } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from '../types/game-type';
 import { Theme } from '../types/theme';
@@ -40,8 +40,7 @@ export class FirebaseDataService {
       title: theme.title,
       gameTitle: theme.gameTitle,
       content: theme.content,
-      likes: 0, 
-      isLiked: false,
+      likedBy: [],
       comments: [],
       createdAt: new Date(),
       owner: this.auth.getUser()?.displayName,
@@ -50,5 +49,23 @@ export class FirebaseDataService {
     await updateDoc(docRef,  {id: docRef.id});
 
     return docRef.id
+  }
+
+  async getThemesByUser(username: string) {
+    const q = query(
+      collection(this.firestore, 'themes'),
+      where('owner', '==', username)
+    );
+    
+    const snapshot = await getDocs(q);
+    
+    if (snapshot.empty) {
+      return [];
+    }
+
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })) as Theme[];
   }
 }
