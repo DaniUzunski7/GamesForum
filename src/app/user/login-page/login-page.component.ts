@@ -29,18 +29,15 @@ export class LoginPageComponent {
   login(form: NgForm) {
     const formData = form.value;
     
-    this.authService
-      .login(formData.email, formData.password)
-      .subscribe({
-      next: () => {
-        this.toastr.success("Login successful!", `Welcome back!`);
-        this.router.navigate(["/reviews"]);
-      },
-      error: (err) => {
-        this.errorMess = err.code;
-        this.toastr.error(`Wrong email or password`, 'Login Failed');
-        form.controls['password'].reset();
-      },
-    });
+    try {
+      this.authService.login(formData.email, formData.password).subscribe( () => {
+          this.toastr.success("Login successful!", `Welcome back!`)
+          this.router.navigate(['/home'])
+        })
+      } catch (error: any) {
+          this.errorMess = error.code;
+          this.toastr.error(`Wrong email or password`, 'Login Failed');
+          form.controls['password'].reset();
+        }
+    }
   }
-}
