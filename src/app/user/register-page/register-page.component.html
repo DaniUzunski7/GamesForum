@@ -39,8 +39,13 @@
             placeholder="Enter your name" 
             ngModel
             #nameInput="ngModel"
+            minlength="4"
+            [class.required]=" nameInput.touched && nameInput.invalid" 
             required  
           />
+          @if (nameInput.invalid && nameInput.touched) {
+            <p class="required-mess">Name should be at least 4 characters long</p>
+          }
         </div>
 
         <div class="form-group ">
@@ -63,11 +68,15 @@
             [appEmailValidator]="domains"
             [class.required]=" emailInput.touched && emailInput.invalid || emailInput.touched && emailInput?.errors?.['appEmailValidator']" 
             [attr.placeholder]="emailInput.invalid && emailInput.touched ? 'Email required' : 'Enter your email'"
-            placeholder="Enter your email" 
+            placeholder="Enter your email"
+            [class.required]=" emailInput.touched && emailInput.invalid"  
             ngModel
             #emailInput="ngModel"
             required  
           />
+          @if (emailInput.invalid && emailInput.touched) {
+            <p class="required-mess">Invalid email</p>
+          }
         </div>
         <div class="form-group">
           <label for="password" class="required-star">Password</label>

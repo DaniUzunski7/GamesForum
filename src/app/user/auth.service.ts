@@ -29,7 +29,7 @@ export class AuthService {
 
   user$ = user(this.firebaseAuth);
   currUser = signal<userInterface | null | undefined>(undefined);
-
+  
   get isLogged(): boolean {
     return JSON.parse(localStorage.getItem(this.USER_KEY)!)
   } 
@@ -89,9 +89,7 @@ export class AuthService {
         );
 
     });
-    
-   
-    
+
   });
     return from(promise);
   }
