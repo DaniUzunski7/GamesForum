@@ -3,7 +3,7 @@ import { UserForAuth } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Firestore, getDoc } from '@angular/fire/firestore';
+import { doc, Firestore, getDoc, updateDoc } from '@angular/fire/firestore';
 import { Auth, sendPasswordResetEmail } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
 import { Theme } from '../../types/theme';
@@ -24,6 +24,7 @@ export class UserProfilePageComponent {
   private firebaseAuth = inject(Auth)
 
   $themes: Theme[] = [];
+  router: any;
 
   constructor(private datePipe: DatePipe, private authService: AuthService, private firebaseService: FirebaseDataService, private toastr: ToastrService) {}
 
@@ -36,8 +37,12 @@ export class UserProfilePageComponent {
 }
 
   user: UserForAuth = JSON.parse(localStorage.getItem('user')!)
+  editingThemeId: string | null = null;
 
   isToggled: boolean = false;
+  editing: boolean = false;
+
+  editFormData: { title: string; gameTitle: string } = { title: '', gameTitle: '' };
 
   dateConverter(date: Date){
     return this.datePipe.transform(date, 'medium', 'Europe/Sofia', 'en-US') 
@@ -48,7 +53,12 @@ export class UserProfilePageComponent {
   }
 
   cancelEdit(){
-    this.isToggled = !this.isToggled;
+    this.isToggled = false;
+  }
+
+  cancelThemeEdit(){
+    this.editingThemeId = null;
+    this.editing = false;
   }
 
   editProfile(form: NgForm){
@@ -87,6 +97,44 @@ export class UserProfilePageComponent {
       this.toastr.error('Failed to delete theme');
     });
   }
+
+  editTheme(themeId: string){
+    this.editingThemeId = themeId;
+    this.editing = true;
+
+  const theme = this.$themes.find(t => t.id === themeId);
+  if (!theme) return;
+
+  this.editFormData = {
+    title: theme.title,
+    gameTitle: theme.gameTitle
+  };
+  }
+
+  async saveEdit(theme: Theme) {
+  const themeRef = doc(this.fireStore, 'themes', theme.id);
+
+  try {
+    await updateDoc(themeRef, {
+      title: this.editFormData.title,
+      gameTitle: this.editFormData.gameTitle,
+      updatedAt: new Date()
+    });
+
+    this.editingThemeId = null;
+    this.editing = false;
+    this.toastr.success('Updated');
+
+    theme.title = this.editFormData.title;
+    theme.gameTitle = this.editFormData.gameTitle;
+
+    setTimeout(() => {
+  this.editingThemeId = null;
+}, 150);
+
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-
+}

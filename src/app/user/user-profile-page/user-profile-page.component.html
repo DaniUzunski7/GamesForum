@@ -1,15 +1,15 @@
 <div class="user-page-container">
-  <!-- Background Image -->
+  
   <div class="background-image"></div>
 
-  <!-- Overlay Content -->
+  
   <div class="overlay">
-    <!-- User Profile Section -->
+    
     <div class="user-profile">
       <h1 class="page-title">My Profile</h1>
 
       <div class="profile-card">
-        <!-- Profile Picture -->
+        
         <div class="profile-picture">
           <img src="/profile-pic.jpg" alt="Profile Picture" class="profile-img">
         </div>
@@ -44,10 +44,10 @@
                 <input type="text" id="name" [(ngModel)]="user.name" name="name"  ngModel #name="ngModel" required>
             </div>
             
-            <!-- <div class="form-group">
+            <div class="form-group">
               <label for="email">Email</label>
               <input type="email" id="email" [(ngModel)]="user.email" name="email"  ngModel #email="ngModel" required>
-            </div> -->
+            </div>
             
             <div class="form-group">
               <label for="phone">Phone Number</label>
@@ -88,8 +88,32 @@
             <p><strong>{{ theme.title }}</strong></p>
             <p>Game: {{ theme.gameTitle }}</p>
           </div>
-          <button class="delete-btn" (click)="deleteTheme(theme.id)">Delete</button>
-        </li>
+          
+          <div class="theme-actions">
+            @if (editing === false){
+              <button class="edit-theme-btn" (click)="editTheme(theme.id)">Edit</button>
+              <button class="delete-btn" (click)="deleteTheme(theme.id)">Delete</button>
+            }
+  </div>
+
+  @if (editingThemeId === theme.id) {
+    <div class="edit-content">
+
+      <div class="edit-conteiner">
+
+        <input [(ngModel)]="editFormData.title" />
+        <input [(ngModel)]="editFormData.gameTitle" />
+
+        <div class="form-actions">
+          <button class="save-button" (click)="saveEdit(theme)">Save</button>
+          <button class="cancel-button" (click)="cancelThemeEdit()">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  }
+
+</li>
       }
       </ul>
   </div>

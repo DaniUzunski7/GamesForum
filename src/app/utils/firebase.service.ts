@@ -43,12 +43,17 @@ export class FirebaseDataService {
       likedBy: [],
       comments: [],
       createdAt: new Date(),
-      owner: this.auth.getUser()?.displayName,
+      owner: this.auth.getCurrentUserFromStorage()!.username,
     });
     
     await updateDoc(docRef,  {id: docRef.id});
 
     return docRef.id
+  }
+
+  async editTheme(theme: Theme) {
+    const docRef = doc(this.firestore, `themes/${theme.id}`);
+    await updateDoc(docRef, { ...theme });
   }
 
   async getThemesByUser(username: string) {

@@ -25,13 +25,32 @@ export class AuthService {
   private firestore = inject(Firestore);
   private usersCollection = collection(this.firestore, 'users');
 
-  constructor(private auth: Auth, private toastr: ToastrService) {}
+  constructor(private auth: Auth, private toastr: ToastrService) {
+    this.user$.subscribe((u: any) => {
+      if (!u) {
+        this.currUser.set(null);
+        return;
+      }
+
+      this.currUser.set({
+        id: u.uid,
+        email: u.email,
+        username: u.displayName,
+        token: null
+      } as userInterface);
+    });
+  }
 
   user$ = user(this.firebaseAuth);
-  currUser = signal<userInterface | null | undefined>(undefined);
+  currUser = signal<userInterface | null>(null);
+
+  getCurrentUserFromStorage(): userInterface | null {
+  const data = localStorage.getItem(this.USER_KEY);
+  return data ? JSON.parse(data) : null;
+}
   
   get isLogged(): boolean {
-    return JSON.parse(localStorage.getItem(this.USER_KEY)!)
+    return !!localStorage.getItem(this.USER_KEY)
   } 
 
   getUser() {
@@ -42,10 +61,10 @@ export class AuthService {
     const usersCollection = collection(this.firestore, 'users');
     
     const newUser = createUserWithEmailAndPassword(this.auth, user.email, user.password!)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       const userFireBase = userCredential.user;
       
-      setDoc(doc(usersCollection, userFireBase.uid), {
+      await setDoc(doc(usersCollection, userFireBase.uid), {
         id: userFireBase.uid,
         email: user.email,
         username: user.username,
@@ -77,6 +96,7 @@ export class AuthService {
 
     const userData = getDoc(user).then((userData) => {
       const userInfo = userData.data() as UserForAuth;
+
       
        localStorage.setItem(this.USER_KEY, JSON.stringify({
             id: uid,

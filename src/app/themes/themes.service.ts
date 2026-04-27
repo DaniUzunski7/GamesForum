@@ -14,10 +14,15 @@ export class ThemesService {
   
   constructor(private authService: AuthService, private toastr: ToastrService) { }
 
-  addNewComment(form: NgForm, theme: Theme, ){
+  async addNewComment(form: NgForm, theme: Theme, ){
     const themeRef = doc(this.firestore, 'themes', theme.id);
       
-    const user = this.authService.currUser()!;
+    const user = this.authService.getCurrentUserFromStorage();
+    
+    if (!user) {
+      this.toastr.error('You are not logged in');
+    return;
+}
     const comment = {
       content: form.value.comment,
       author: user.username,
@@ -27,7 +32,7 @@ export class ThemesService {
     } as UserComment;
 
     try {
-       updateDoc(themeRef, {
+      await updateDoc(themeRef, {
       comments: [...theme.comments, comment]
     });
     } catch (error) {

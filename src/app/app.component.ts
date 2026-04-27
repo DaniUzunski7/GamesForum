@@ -36,6 +36,7 @@ export class AppComponent implements OnInit{
         this.authService.currUser.set({
           email: user.email!,
           username: user.displayName!,
+          token: undefined
         })
       } else {
         this.authService.currUser.set(null);
