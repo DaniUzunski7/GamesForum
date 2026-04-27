@@ -42,7 +42,9 @@ export class AuthService {
   }
 
   user$ = user(this.firebaseAuth);
-  currUser = signal<userInterface | null>(null);
+  // currUser = signal<userInterface | null>(null);
+  currUser = signal<userInterface | null>(this.getCurrentUserFromStorage());
+  
 
   getCurrentUserFromStorage(): userInterface | null {
   const data = localStorage.getItem(this.USER_KEY);
